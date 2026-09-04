@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Proh Pharmacy — Landing Page
 
-## Getting Started
+> **Reliable medicines, delivered anywhere in Ghana.**  
+> Official web platform for Proh Pharmacy, providing dependable retail and wholesale pharmaceutical supply to individuals, clinics, and pharmacies nationwide.
 
-First, run the development server:
+---
 
+## 🌟 Key Features
+
+- **Interactive Ghana Delivery Map**: Interactive regional map visualizing active trekking routes, distribution hubs, and expansion zones across Ghana.
+- **Wholesale & Retail Medicine Enquiries**: Clean, responsive contact form tailored for Ghanaian users with 10-digit phone format (`000 0000 000`) and structured subject selection.
+- **Classic Minimal Mobile Burger Menu**: Fullscreen translucent green frosted blur overlay (`backdrop-blur-xl`) with smooth right-to-left slide transition, numbered links, and prominent Request Supply CTA.
+- **Brand Consistency**: Distinctive color identity combining deep pharmaceutical greens (`#045E1F`, `#022619`, `#087A2D`) with bold red accent action triggers (`#DE2512`).
+- **Direct Communication Channels**: One-tap floating WhatsApp action button (FAB) and instant phone/email shortcuts.
+- **Production SEO & Structured Data**: Built-in JSON-LD Schema (`PharmacySchema`), dynamic sitemap, robots.txt, and complete OpenGraph/Twitter card metadata.
+- **Mobile-First Responsiveness**: Handcrafted for all screen sizes (360px up to 4K displays) with strict horizontal overflow protection.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Technology |
+|---|---|
+| **Framework** | [Next.js 16](https://nextjs.org/) (App Router, Turbopack, Standalone Output) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) & Vanilla CSS Tokens |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Fonts** | Inter & Pacifico via `next/font/google` |
+| **Containerization** | Docker (Multi-stage Node.js Alpine build) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js**: v20.x or later
+- **npm**: v10.x or later (or `pnpm` / `yarn`)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/proh-pharmacy/prohpharmacy-landing-page.git
+   cd prohpharmacy-landing-page
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 🐳 Docker Deployment
+
+The project includes a production-ready, multi-stage `Dockerfile` that uses Next.js standalone output for minimal image size and non-root security.
+
+### Build the Docker image:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker build -t prohpharmacy-landing-page .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run the container:
+```bash
+docker run -d -p 3000:3000 --name proh-web prohpharmacy-landing-page
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Access the application at [http://localhost:3000](http://localhost:3000).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Key brand details, contact information, phone numbers, and operational hours can be updated in a single central file:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👉 [`src/config/site.ts`](file:///Users/admin/Desktop/prohpharmacy/landing-page/src/config/site.ts)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript
+export const siteConfig = {
+  name: "Proh Pharmacy",
+  contact: {
+    email: "info@prohpharmacy.com",
+    phoneDisplay: "+233 (0) XX XXX XXXX",
+    phoneHref: "tel:+233000000000",
+    whatsappHref: "https://wa.me/233000000000?text=...",
+    address: "Accra, Ghana",
+    openingHours: "Mon - Sat: 8:00 AM - 8:00 PM",
+  },
+  // ...
+};
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` — Starts the Next.js development server with Turbopack.
+- `npm run build` — Creates an optimized production build with standalone bundle.
+- `npm run start` — Starts the Next.js production server.
+- `npm run lint` — Runs ESLint to check for code issues.
+
+---
+
+## 🛡️ License & Ownership
+
+Copyright © 2026 **Proh Pharmacy**. All rights reserved.
+Accra, Ghana.

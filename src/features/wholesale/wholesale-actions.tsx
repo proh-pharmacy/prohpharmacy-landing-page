@@ -10,7 +10,6 @@ export function WholesaleActions() {
       icon: FileSpreadsheet,
       actionText: "Request Quotation",
       href: "/contact?type=wholesale#contact-form",
-      highlight: true,
     },
     {
       title: "Send a Medicine List",
@@ -18,52 +17,40 @@ export function WholesaleActions() {
       icon: Send,
       actionText: "Submit Medicine List",
       href: "/contact?type=wholesale#contact-form",
-      highlight: false,
     },
     {
       title: "Contact the Sales Team",
       desc: "Speak with our pharmaceutical account representatives regarding ongoing supply contracts.",
       icon: Users,
-      actionText: "Contact Sales Rep",
+      actionText: "Contact Sales Team",
       href: "/contact?type=wholesale#contact-form",
-      highlight: false,
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
       {actions.map((act) => {
         const Icon = act.icon;
         return (
           <div
             key={act.title}
-            className={`rounded-2xl p-6 flex flex-col justify-between border transition-all ${
-              act.highlight
-                ? "bg-white border-primary-green/50 shadow-md ring-1 ring-primary-green/20"
-                : "bg-white border-light-border hover:border-primary-green/40 hover:shadow-xs"
-            }`}
+            className="rounded-xl p-6 flex flex-col justify-between border border-light-border bg-white hover:border-primary-green/40 transition-all"
           >
             <div>
-              <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                  act.highlight
-                    ? "bg-light-green text-deep-green border border-light-border"
-                    : "bg-gray-50 text-deep-green border border-light-border"
-                }`}
-              >
-                <Icon className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4 bg-light-green text-deep-green">
+                <Icon className="w-5 h-5" />
               </div>
-              <h4 className="text-lg font-bold text-main-text">{act.title}</h4>
-              <p className="text-sm text-muted-text mt-2 leading-relaxed">{act.desc}</p>
+              <h4 className="text-base font-bold text-main-text">{act.title}</h4>
+              <p className="text-xs sm:text-sm text-muted-text mt-2 leading-relaxed">{act.desc}</p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-light-border/70">
+            <div className="mt-6 pt-4 border-t border-light-border/60">
               <Link
                 href={act.href}
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-deep-green hover:text-primary-green transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-deep-green hover:text-primary-green transition-colors"
               >
                 <span>{act.actionText}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

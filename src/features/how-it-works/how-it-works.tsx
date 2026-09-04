@@ -27,15 +27,15 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-[#F8FCFA] border-b border-light-border/60">
+    <section className="py-14 md:py-20 bg-[#F9FBF9] border-b border-light-border">
       <div className="container-custom">
         <SectionHeader
-          eyebrow="Simple Ordering Workflow"
-          title="How Ordering Works"
-          description="A straightforward, transparent 3-step process designed for fast fulfilment for both individual patients and healthcare institutions."
+          eyebrow="Order Process"
+          title="How ordering works"
+          description="A simple three-step process for retail customers and healthcare institutions."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((step) => (
             <StepCard
               key={step.stepNumber}

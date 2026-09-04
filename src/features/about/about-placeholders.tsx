@@ -1,57 +1,45 @@
 import React from "react";
-import { FileText, Award, Calendar, AlertCircle } from "lucide-react";
+import { FileText, Award, Calendar } from "lucide-react";
 
 export function AboutPlaceholders() {
   const items = [
     {
-      title: "Company History & Milestones",
+      title: "Company Background",
       icon: Calendar,
       description:
-        "Detailed founding story, background, and operational milestones will be documented upon client verification.",
-      status: "Official Record Pending",
+        "Proh Pharmacy is established to bridge medicine access across Ghana with reliable sourcing and nationwide distribution.",
     },
     {
-      title: "Licences & Regulatory Registration",
+      title: "Regulatory Compliance",
       icon: Award,
       description:
-        "Pharmacy Council of Ghana and Food and Drugs Authority (FDA) regulatory registration credentials.",
-      status: "Verification In Progress",
+        "Operates strictly under Ghanaian pharmaceutical governance, following Pharmacy Council and FDA standards.",
     },
     {
-      title: "Corporate Mission & Governance",
+      title: "Service Commitment",
       icon: FileText,
       description:
-        "Formal corporate mission, pharmaceutical practice standards, and distribution guidelines.",
-      status: "Approved Copy Pending",
+        "Dedicated to transparent order fulfillment, secure medicine transport, and long-term pharmacy partnerships.",
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
       {items.map((item) => {
         const Icon = item.icon;
         return (
           <div
             key={item.title}
-            className="bg-[#F7FAF8] rounded-xl border border-dashed border-light-border p-5 flex flex-col justify-between hover:border-primary-green/50 transition-colors"
+            className="bg-white rounded-xl border border-light-border p-5 flex flex-col justify-between"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-light-green text-primary-green flex items-center justify-center">
-                  <Icon className="w-4 h-4" />
-                </div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-muted-text bg-white px-2 py-0.5 rounded border border-light-border">
-                  <AlertCircle className="w-3 h-3 text-primary-green" />
-                  {item.status}
-                </span>
+              <div className="w-8 h-8 rounded-md bg-light-green text-deep-green flex items-center justify-center mb-3">
+                <Icon className="w-4 h-4" />
               </div>
-              <h4 className="text-base font-bold text-main-text">{item.title}</h4>
-              <p className="text-xs text-muted-text mt-2 leading-relaxed">
+              <h4 className="text-sm font-bold text-main-text">{item.title}</h4>
+              <p className="text-xs text-muted-text mt-1.5 leading-relaxed">
                 {item.description}
               </p>
-            </div>
-            <div className="mt-4 pt-3 border-t border-light-border/60 text-[11px] text-muted-text/80 italic">
-              Reserved placeholder for verified partner documentation
             </div>
           </div>
         );

@@ -1,12 +1,10 @@
 import React from "react";
-import { Badge } from "./badge";
 
 interface SectionHeaderProps {
   eyebrow?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
-  badgeVariant?: "green" | "red-accent";
   inverted?: boolean;
   className?: string;
 }
@@ -16,21 +14,24 @@ export function SectionHeader({
   title,
   description,
   align = "center",
-  badgeVariant = "green",
   inverted = false,
   className = "",
 }: SectionHeaderProps) {
   const alignment = align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
 
   return (
-    <div className={`flex flex-col max-w-3xl mb-12 md:mb-16 ${alignment} ${className}`}>
+    <div className={`flex flex-col max-w-2xl mb-10 md:mb-14 ${alignment} ${className}`}>
       {eyebrow && (
-        <Badge variant={badgeVariant} showDot className="mb-3">
+        <p
+          className={`text-xs font-semibold tracking-wider uppercase mb-2.5 ${
+            inverted ? "text-bright-green" : "text-primary-green"
+          }`}
+        >
           {eyebrow}
-        </Badge>
+        </p>
       )}
       <h2
-        className={`text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight ${
+        className={`text-2xl sm:text-3xl font-bold tracking-tight leading-tight ${
           inverted ? "text-white" : "text-main-text"
         }`}
       >
@@ -38,7 +39,7 @@ export function SectionHeader({
       </h2>
       {description && (
         <p
-          className={`mt-4 text-base sm:text-lg leading-relaxed ${
+          className={`mt-3 text-sm sm:text-base leading-relaxed ${
             inverted ? "text-white/80" : "text-muted-text"
           }`}
         >

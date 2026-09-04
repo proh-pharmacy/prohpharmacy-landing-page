@@ -1,43 +1,23 @@
 import React from "react";
-import { CheckCircle2, ShieldCheck, Truck } from "lucide-react";
+import { Check } from "lucide-react";
 
 export function TrustPoints() {
   const points = [
-    {
-      title: "Retail and wholesale supply",
-      description: "Direct to individuals & healthcare facilities",
-      icon: CheckCircle2,
-    },
-    {
-      title: "Nationwide delivery",
-      description: "Convenient courier coverage across Ghana",
-      icon: Truck,
-    },
-    {
-      title: "Dedicated pharmacy supply",
-      description: "Reliable restocking for retail pharmacies",
-      icon: ShieldCheck,
-    },
+    "Retail & wholesale supply",
+    "Nationwide delivery",
+    "Dedicated pharmacy supply",
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-light-border/80">
-      {points.map((point) => {
-        const Icon = point.icon;
-        return (
-          <div key={point.title} className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-light-green text-primary-green flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary-green/20">
-              <Icon className="w-4 h-4" />
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold text-main-text leading-tight">
-                {point.title}
-              </h4>
-              <p className="text-xs text-muted-text mt-0.5">{point.description}</p>
-            </div>
-          </div>
-        );
-      })}
+    <div className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-3 text-xs sm:text-sm text-muted-text">
+      {points.map((point) => (
+        <div key={point} className="flex items-center gap-1.5">
+          <span className="w-4 h-4 rounded-full bg-light-green text-primary-green flex items-center justify-center flex-shrink-0">
+            <Check className="w-2.5 h-2.5 stroke-[3]" />
+          </span>
+          <span className="font-medium text-main-text/80">{point}</span>
+        </div>
+      ))}
     </div>
   );
 }

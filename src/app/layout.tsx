@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { TopBar } from "@/components/layout/top-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -51,8 +58,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-white text-main-text antialiased">
+    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+      <body className="min-h-screen flex flex-col bg-white text-main-text font-sans antialiased">
         <TopBar />
         <Header />
         <main className="flex-grow">{children}</main>

@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { HeroIllustration } from "./hero-illustration";
+import { HeroDivider } from "./hero-divider";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[500px] md:min-h-[580px] lg:min-h-[620px] flex items-center pt-12 pb-16 md:pt-16 md:pb-20 border-b border-light-border/60">
+    <section className="relative overflow-hidden min-h-[480px] md:min-h-[540px] lg:min-h-[580px] flex items-center pt-10 pb-14 md:pt-14 md:pb-20">
       {/* Background Banner spanning across the entire hero section */}
       <div className="absolute inset-0 -z-10 pointer-events-none select-none">
         <Image
@@ -22,7 +23,7 @@ export function Hero() {
       </div>
 
       {/* Centered snug container bringing text and image close together */}
-      <div className="w-full max-w-5xl mx-auto px-5 sm:px-8 relative z-10">
+      <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           {/* Left Column: Minimal, bold stacked typography */}
           <div className="lg:col-span-5 flex flex-col items-start space-y-6">
@@ -36,16 +37,23 @@ export function Hero() {
               Across Ghana
             </h1>
 
-            {/* Red Tinted Minimal CTA */}
+            {/* Non-intrusive faded supporting phrase with subtle red dotted highlight */}
+            <p className="text-sm sm:text-[15px] text-gray-500 font-normal leading-relaxed max-w-sm">
+              Dependable{" "}
+              <span className="text-red-accent/90 border-b border-dotted border-red-accent/40 pb-0.5 font-medium">
+                retail and wholesale
+              </span>{" "}
+              supply for individuals and pharmacies.
+            </p>
+
+            {/* Solid Red CTA matching the header */}
             <div className="pt-2">
               <Link
                 href="/wholesale"
-                className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-red-accent hover:text-red-700 transition-colors group"
+                className="group inline-flex items-center gap-2.5 text-sm sm:text-base font-semibold tracking-tight px-5 py-3 bg-red-accent text-white hover:bg-red-accent-hover transition-colors"
               >
-                <ArrowUpRight className="w-4 h-4 text-red-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                <span className="underline decoration-red-200 hover:decoration-red-accent underline-offset-4">
-                  Request supply
-                </span>
+                <span>Request supply</span>
+                <ArrowUpRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </div>
           </div>
@@ -56,6 +64,9 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Raw SVG wave divider transitioning smoothly into services */}
+      <HeroDivider />
     </section>
   );
 }

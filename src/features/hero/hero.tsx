@@ -5,16 +5,19 @@ import { TrustPoints } from "./trust-points";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-white">
+    <section className="relative overflow-hidden pt-8 pb-14 md:pt-14 md:pb-20 bg-linear-to-r from-white via-[#F9FCFA] to-[#F2FAF6] border-b border-light-border/50">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Subtle, Refined Headline & Content */}
-          <div className="lg:col-span-7 flex flex-col items-start space-y-5">
+          {/* Left Column: Clean, modern, breathable typography matching reference */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start space-y-5">
+            {/* Brand Accent Bar matching reference visual */}
+            <div className="w-12 h-1.5 bg-primary-green rounded-full" />
+
             <p className="text-xs sm:text-sm font-semibold tracking-wider text-primary-green uppercase">
               Retail & Wholesale Pharmaceutical Supply
             </p>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-bold text-main-text leading-[1.2] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-main-text leading-[1.18] tracking-tight">
               Reliable medicines, delivered anywhere in Ghana.
             </h1>
 
@@ -23,7 +26,7 @@ export function Hero() {
               individuals and pharmacies, with convenient delivery across Ghana.
             </p>
 
-            {/* Clean CTA Buttons */}
+            {/* Clean, well-spaced CTA Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
               <Button href="/wholesale" size="md" variant="primary">
                 Request Wholesale Supply
@@ -39,8 +42,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Clean Vector Illustration inspired by user reference */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          {/* Right Column: Hero Visual with Rider on Geometric Rings */}
+          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end">
             <HeroIllustration />
           </div>
         </div>

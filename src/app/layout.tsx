@@ -65,12 +65,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
-      <body className="min-h-screen flex flex-col bg-white text-main-text font-sans antialiased">
+      <body className="min-h-screen flex flex-col bg-white text-main-text font-sans antialiased overflow-x-hidden w-full max-w-[100vw]">
         <Nprogressprovider>
           <PharmacySchema />
           <TopBar />
           <Header />
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow overflow-x-hidden w-full">{children}</main>
           <Footer />
           <WhatsAppFab />
         </Nprogressprovider>

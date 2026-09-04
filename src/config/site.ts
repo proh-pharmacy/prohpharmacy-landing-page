@@ -6,7 +6,7 @@ export const siteConfig = {
   description:
     "Proh Pharmacy provides dependable retail and wholesale medicine supply to individuals and pharmacies, with convenient delivery across Ghana.",
   topBarMessage: "Retail and wholesale medicine delivery anywhere in Ghana",
-  
+
   // Contact details & clearly identified placeholders
   contact: {
     email: "info@prohpharmacy.com",

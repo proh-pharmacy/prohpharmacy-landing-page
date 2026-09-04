@@ -1,64 +1,57 @@
 import React from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { HeroIllustration } from "./hero-illustration";
-import { TrustPoints } from "./trust-points";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 border-b border-light-border/60">
+    <section className="relative overflow-hidden min-h-[500px] md:min-h-[580px] lg:min-h-[620px] flex items-center pt-12 pb-16 md:pt-16 md:pb-20 border-b border-light-border/60">
       {/* Background Banner spanning across the entire hero section */}
       <div className="absolute inset-0 -z-10 pointer-events-none select-none">
         <Image
-          src="/images/hero_bg_rings.png"
+          src="/images/hero_bg_alternate_with_map.png"
           alt="Pharmaceutical delivery geometric pattern"
           fill
           priority
           sizes="100vw"
           className="object-cover object-right md:object-center"
         />
-        {/* Subtle white vignette on left to keep text ultra-crisp while letting rings show through */}
-        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent lg:via-white/40" />
+        {/* Soft vignette to maintain crisp typography readability */}
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent lg:via-white/30" />
       </div>
 
-      <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Clean, modern typography matching reference */}
-          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start space-y-5">
-            {/* Brand Accent Bar matching reference visual */}
-            <div className="w-12 h-1.5 bg-primary-green rounded-full" />
+      {/* Centered snug container bringing text and image close together */}
+      <div className="w-full max-w-5xl mx-auto px-5 sm:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
+          {/* Left Column: Minimal, bold stacked typography */}
+          <div className="lg:col-span-5 flex flex-col items-start space-y-6">
+            {/* Brand Accent Bar */}
+            <div className="w-14 h-1.5 bg-primary-green rounded-full" />
 
-            <p className="text-xs sm:text-sm font-semibold tracking-wider text-primary-green uppercase">
-              Retail & Wholesale Pharmaceutical Supply
-            </p>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-main-text leading-[1.18] tracking-tight">
-              Reliable medicines, delivered anywhere in Ghana.
+            {/* 3-line clean stacked headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-main-text leading-[1.14] tracking-tight">
+              Medicines<br />
+              Delivered<br />
+              Across Ghana
             </h1>
 
-            <p className="text-base sm:text-lg text-muted-text leading-relaxed max-w-xl">
-              Proh Pharmacy provides dependable retail and wholesale medicine supply to
-              individuals and pharmacies, with convenient delivery across Ghana.
-            </p>
-
-            {/* Clean, well-spaced CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 w-full sm:w-auto">
-              <Button href="/wholesale" size="md" variant="primary">
-                Request Wholesale Supply
-              </Button>
-              <Button href="/contact" size="md" variant="outline">
-                Contact Us
-              </Button>
-            </div>
-
-            {/* Subtle Inline Trust Points */}
-            <div className="w-full pt-2">
-              <TrustPoints />
+            {/* Red Tinted Minimal CTA */}
+            <div className="pt-2">
+              <Link
+                href="/wholesale"
+                className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-red-accent hover:text-red-700 transition-colors group"
+              >
+                <ArrowUpRight className="w-4 h-4 text-red-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span className="underline decoration-red-200 hover:decoration-red-accent underline-offset-4">
+                  Request supply
+                </span>
+              </Link>
             </div>
           </div>
 
-          {/* Right Column: Rider Image cleanly standing over the banner background */}
-          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end">
+          {/* Right Column: Rider sitting immediately adjacent to the text */}
+          <div className="lg:col-span-7 flex justify-start items-center lg:-ml-2">
             <HeroIllustration />
           </div>
         </div>

@@ -43,3 +43,54 @@
     padding-right: 2rem;
   }
 }
+
+.delivery-skeleton-stroke {
+  animation: strokeGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes strokeGlow {
+  0%, 100% {
+    stroke: #d8eee4;
+    opacity: 0.5;
+  }
+  50% {
+    stroke: #bde4d5;
+    opacity: 0.8;
+  }
+}
+
+.delivery-shimmer-sweep {
+  animation: shimmerSweep 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.rider-entrance-animation {
+  animation: riderRollIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes riderRollIn {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) scale(0.97);
+  }
+  15% {
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-3px) scale(1.004);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+
+

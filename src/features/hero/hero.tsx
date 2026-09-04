@@ -1,14 +1,29 @@
 import React from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { HeroIllustration } from "./hero-illustration";
 import { TrustPoints } from "./trust-points";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-8 pb-14 md:pt-14 md:pb-20 bg-linear-to-r from-white via-[#F9FCFA] to-[#F2FAF6] border-b border-light-border/50">
-      <div className="container-custom">
+    <section className="relative overflow-hidden pt-12 pb-16 md:pt-18 md:pb-24 border-b border-light-border/60">
+      {/* Background Banner spanning across the entire hero section */}
+      <div className="absolute inset-0 -z-10 pointer-events-none select-none">
+        <Image
+          src="/images/hero_bg_rings.png"
+          alt="Pharmaceutical delivery geometric pattern"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-right md:object-center"
+        />
+        {/* Subtle white vignette on left to keep text ultra-crisp while letting rings show through */}
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent lg:via-white/40" />
+      </div>
+
+      <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Clean, modern, breathable typography matching reference */}
+          {/* Left Column: Clean, modern typography matching reference */}
           <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start space-y-5">
             {/* Brand Accent Bar matching reference visual */}
             <div className="w-12 h-1.5 bg-primary-green rounded-full" />
@@ -42,7 +57,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Hero Visual with Rider on Geometric Rings */}
+          {/* Right Column: Rider Image cleanly standing over the banner background */}
           <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-end">
             <HeroIllustration />
           </div>

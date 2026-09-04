@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { WholesaleContent } from "@/features/wholesale/wholesale-content";
 import { HowItWorks } from "@/features/how-it-works/how-it-works";
-import { CtaBanner } from "@/features/cta/cta-banner";
 
 export const metadata: Metadata = {
   title: "Wholesale Pharmacy Supply | Bulk Medicine Restocking in Ghana",
@@ -17,10 +16,9 @@ export const metadata: Metadata = {
 
 export default function WholesalePage() {
   return (
-    <div className="pt-6">
+    <div>
       <WholesaleContent />
       <HowItWorks />
-      <CtaBanner />
     </div>
   );
 }

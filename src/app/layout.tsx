@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { TopBar } from "@/components/layout/top-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PharmacySchema } from "@/components/seo/pharmacy-schema";
 import "./globals.css";
 
 const inter = Inter({
@@ -63,6 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body className="min-h-screen flex flex-col bg-white text-main-text font-sans antialiased">
+        <PharmacySchema />
         <TopBar />
         <Header />
         <main className="flex-grow">{children}</main>

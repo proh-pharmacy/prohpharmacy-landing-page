@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DeliveryContent } from "@/features/delivery/delivery-content";
 import { HowItWorks } from "@/features/how-it-works/how-it-works";
-import { CtaBanner } from "@/features/cta/cta-banner";
 
 export const metadata: Metadata = {
   title: "Nationwide Medicine Delivery | All 16 Regions of Ghana",
@@ -17,10 +16,9 @@ export const metadata: Metadata = {
 
 export default function DeliveryPage() {
   return (
-    <div className="pt-6">
+    <div>
       <DeliveryContent />
       <HowItWorks />
-      <CtaBanner />
     </div>
   );
 }

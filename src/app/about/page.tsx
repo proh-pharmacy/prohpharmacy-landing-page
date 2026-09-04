@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { AboutContent } from "@/features/about/about-content";
-import { CtaBanner } from "@/features/cta/cta-banner";
 
 export const metadata: Metadata = {
   title: "About Us | Trusted Pharmaceutical Supply Partner",
@@ -16,9 +15,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="pt-6">
-      <AboutContent isStandalonePage />
-      <CtaBanner />
+    <div>
+      <AboutContent />
     </div>
   );
 }

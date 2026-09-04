@@ -33,17 +33,17 @@ export function Hero() {
             {/* 3-line clean stacked headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-main-text leading-[1.14] tracking-tight">
               Medicines<br />
-              Delivered<br />
+              Supplied<br />
               Across Ghana
             </h1>
 
             {/* Non-intrusive faded supporting phrase with subtle red dotted highlight */}
             <p className="text-sm sm:text-[15px] text-gray-500 font-normal leading-relaxed max-w-sm">
-              Dependable{" "}
+
               <span className="text-red-accent/90 border-b border-dotted border-red-accent/40 pb-0.5 font-medium">
-                retail and wholesale
+                Retail and wholesale
               </span>{" "}
-              supply for individuals and pharmacies.
+              supply of medicines to  individuals, healthcare facilities and pharmacies.
             </p>
 
             {/* Solid Red CTA matching the header */}

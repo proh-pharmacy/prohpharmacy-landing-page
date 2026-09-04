@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ServicesGrid } from "@/features/services/services-grid";
 import { HowItWorks } from "@/features/how-it-works/how-it-works";
-import { CtaBanner } from "@/features/cta/cta-banner";
 
 export const metadata: Metadata = {
   title: "Pharmaceutical Services | Retail, Wholesale & Delivery",
@@ -17,10 +16,9 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="pt-6">
+    <div>
       <ServicesGrid />
       <HowItWorks />
-      <CtaBanner />
     </div>
   );
 }

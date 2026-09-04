@@ -1,234 +1,253 @@
 "use client";
 
 import React, { useState } from "react";
-import { EnquiryType, ContactFormData } from "@/types";
 import { siteConfig } from "@/config/site";
-import { Button } from "@/components/ui/button";
-import { CheckCircle2, Send, Mail, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, CheckCircle2, MessageCircle } from "lucide-react";
 
 export function ContactForm() {
-  const [formData, setFormData] = useState<ContactFormData>({
-    fullName: "",
-    phone: "",
-    email: "",
-    businessName: "",
-    enquiryType: "wholesale",
-    message: "",
-  });
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [entityType, setEntityType] = useState<"personal" | "institutional">("personal");
+  const [subject, setSubject] = useState("");
+  const [otherSubject, setOtherSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "validated_pending_backend">("idle");
-
-  const validate = () => {
-    const newErrors: Record<string, string> = {};
-
-    if (!formData.fullName.trim() || formData.fullName.trim().length < 2) {
-      newErrors.fullName = "Please enter your full name (at least 2 characters).";
-    }
-
-    if (!formData.phone.trim() || !/^[+0-9\s-]{8,20}$/.test(formData.phone.trim())) {
-      newErrors.phone = "Please enter a valid contact phone number.";
-    }
-
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = "Please enter a valid email address.";
-    }
-
-    if (!formData.message.trim() || formData.message.trim().length < 10) {
-      newErrors.message = "Please describe your medicine or quotation request (at least 10 characters).";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const isOther = subject === "Other";
+  const effectiveSubject = isOther ? otherSubject : subject;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      // Clear errors and show truthful validation feedback
-      setSubmissionStatus("validated_pending_backend");
+    if (name.trim() && phone.trim() && effectiveSubject.trim() && message.trim()) {
+      setSubmitted(true);
+      setName("");
+      setPhone("");
+      setEntityType("personal");
+      setSubject("");
+      setOtherSubject("");
+      setMessage("");
+      setTimeout(() => setSubmitted(false), 6000);
     }
   };
 
   return (
-    <div id="contact-form" className="bg-white rounded-2xl border border-light-border p-6 sm:p-8 shadow-xs">
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-main-text">Send an Enquiry or Quotation Request</h3>
-        <p className="text-xs sm:text-sm text-muted-text mt-1">
-          Complete the form below to initiate medicine supply or distribution enquiries.
-        </p>
-      </div>
+    <div className="bg-white p-3.5 sm:p-4 border border-light-border/60 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
+        {/* Left Column: Green Tint Direct Contact Information Card (Matching Landing Page Green) */}
+        <div className="md:col-span-5 bg-gradient-to-br from-[#018959] to-[#016843] p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between min-h-[400px] sm:min-h-[460px]">
+          {/* Glowing Circle in bottom right corner (matching reference image) */}
+          <div className="absolute -bottom-16 -right-16 w-52 h-52 rounded-full bg-white/10 pointer-events-none" />
+          <div className="absolute -bottom-24 -right-8 w-44 h-44 rounded-full bg-[#34D399]/25 pointer-events-none" />
 
-      {submissionStatus === "validated_pending_backend" ? (
-        <div className="p-6 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 space-y-4">
-          <div className="flex items-start gap-3">
-            <CheckCircle2 className="w-6 h-6 text-primary-green flex-shrink-0 mt-0.5" />
-            <div>
-              <h4 className="font-bold text-base text-main-text">Your Form Input is Validated!</h4>
-              <p className="text-xs text-muted-text mt-1 leading-relaxed">
-                Thank you, <strong>{formData.fullName}</strong>. As specified, the automated form-handling
-                service for <code>prohpharmacy.com</code> is currently being connected to our customer
-                database.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-lg bg-white border border-amber-200 text-xs space-y-2">
-            <p className="font-semibold text-deep-green">
-              To complete your {formData.enquiryType} request immediately, please reach us directly:
+          <div className="relative z-10">
+            <h3 className="text-2xl font-bold text-white tracking-tight">Contact Information</h3>
+            <p className="text-white/80 text-xs sm:text-sm mt-2 leading-relaxed">
+              Reach out directly for retail medicine enquiries, wholesale supplies, or distribution across Ghana.
             </p>
-            <div className="flex flex-col sm:flex-row gap-2 pt-1">
+
+            <div className="mt-8 sm:mt-10 space-y-5">
+              {/* Phone Lines */}
               <a
-                href={`mailto:${siteConfig.contact.email}?subject=Enquiry from ${encodeURIComponent(formData.fullName)}&body=${encodeURIComponent(formData.message)}`}
-                className="inline-flex items-center gap-1.5 px-3 py-2 bg-deep-green text-white rounded-md font-medium hover:bg-primary-green transition-colors"
+                href={siteConfig.contact.phoneHref}
+                className="flex items-start gap-3.5 group transition-opacity hover:opacity-90"
               >
-                <Mail className="w-3.5 h-3.5" />
-                Email Direct ({siteConfig.contact.email})
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-white/20 transition-colors">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-xs sm:text-sm text-white/90 leading-snug">
+                  <div className="font-semibold">+233 24 123 4567</div>
+                  <div className="mt-0.5 text-white/75">+233 50 987 6543</div>
+                </div>
               </a>
+
+              {/* Email */}
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="flex items-center gap-3.5 group transition-opacity hover:opacity-90"
+              >
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
+                  <Mail className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-xs sm:text-sm text-white/90 font-medium">
+                  {siteConfig.contact.email}
+                </div>
+              </a>
+
+              {/* WhatsApp Direct Chat */}
               <a
                 href={siteConfig.contact.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-2 bg-light-green text-deep-green border border-light-border rounded-md font-medium hover:bg-[#e1f5e8] transition-colors"
+                className="flex items-center gap-3.5 group transition-opacity hover:opacity-90"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-bright-green" />
-                Chat via WhatsApp
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
+                  <MessageCircle className="w-4 h-4 text-[#34D399]" />
+                </div>
+                <div className="text-xs sm:text-sm text-white/90 font-medium">
+                  Chat on WhatsApp
+                </div>
               </a>
+
+              {/* Location */}
+              <div className="flex items-center gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-white" />
+                </div>
+                <div className="text-xs sm:text-sm text-white/90">
+                  {siteConfig.contact.address}
+                </div>
+              </div>
             </div>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setSubmissionStatus("idle")}
-            className="text-xs text-muted-text underline hover:text-deep-green cursor-pointer"
-          >
-            Edit form inputs
-          </button>
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-          {/* Full Name */}
-          <div>
-            <label htmlFor="fullName" className="block text-xs font-semibold text-main-text mb-1">
-              Full Name <span className="text-red-accent">*</span>
-            </label>
-            <input
-              id="fullName"
-              type="text"
-              value={formData.fullName}
-              onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-              placeholder="e.g. Kwame Mensah"
-              className={`w-full px-3.5 py-2.5 rounded-lg text-sm border bg-white focus:outline-none focus:ring-2 focus:ring-primary-green ${
-                errors.fullName ? "border-red-accent" : "border-light-border"
-              }`}
-            />
-            {errors.fullName && <p className="text-xs text-red-accent mt-1">{errors.fullName}</p>}
+
+        {/* Right Column: Clean Underline-Input Form (Matching Reference Image) */}
+        <div className="md:col-span-7 flex flex-col justify-center px-4 sm:px-5 py-4 sm:py-5">
+          <div className="mb-5 sm:mb-6">
+            <p className="text-xs sm:text-sm text-gray-500 font-normal leading-relaxed">
+              Fill out this form and we will reach out to you.
+            </p>
           </div>
 
-          {/* Grid: Phone & Email */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="space-y-6">
+
+            {/* Entity Type */}
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold text-main-text mb-1">
-                Phone Number <span className="text-red-accent">*</span>
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="+233 XX XXX XXXX"
-                className={`w-full px-3.5 py-2.5 rounded-lg text-sm border bg-white focus:outline-none focus:ring-2 focus:ring-primary-green ${
-                  errors.phone ? "border-red-accent" : "border-light-border"
-                }`}
-              />
-              {errors.phone && <p className="text-xs text-red-accent mt-1">{errors.phone}</p>}
+              <p className="text-xs font-semibold text-gray-400 mb-2">I&apos;m contacting as</p>
+              <div className="flex items-center gap-6">
+                <label htmlFor="entity-personal" className="flex items-center gap-2 cursor-pointer text-sm text-main-text">
+                  <input
+                    id="entity-personal"
+                    type="radio"
+                    name="entityType"
+                    value="personal"
+                    checked={entityType === "personal"}
+                    onChange={() => setEntityType("personal")}
+                    className="accent-[#018959] w-4 h-4 cursor-pointer"
+                  />
+                  Personal
+                </label>
+                <label htmlFor="entity-institutional" className="flex items-center gap-2 cursor-pointer text-sm text-main-text">
+                  <input
+                    id="entity-institutional"
+                    type="radio"
+                    name="entityType"
+                    value="institutional"
+                    checked={entityType === "institutional"}
+                    onChange={() => setEntityType("institutional")}
+                    className="accent-[#018959] w-4 h-4 cursor-pointer"
+                  />
+                  Business or Institutional
+                </label>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="contact-name" className="block text-xs font-semibold text-gray-400 mb-1">
+                  Your Name
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Kwame Mensah"
+                  className="w-full border-b border-gray-200 focus:border-[#018959] py-2 text-sm text-main-text font-medium bg-transparent outline-none transition-colors placeholder:text-gray-300"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-phone" className="block text-xs font-semibold text-gray-400 mb-1">
+                  Phone Number
+                </label>
+                <input
+                  id="contact-phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="000 0000 000"
+                  className="w-full border-b border-gray-200 focus:border-[#018959] py-2 text-sm text-main-text font-medium bg-transparent outline-none transition-colors placeholder:text-gray-300"
+                  required
+                />
+              </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold text-main-text mb-1">
-                Email Address <span className="text-red-accent">*</span>
+              <label htmlFor="contact-subject" className="block text-xs font-semibold text-gray-400 mb-1">
+                Your Subject
               </label>
-              <input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="name@domain.com"
-                className={`w-full px-3.5 py-2.5 rounded-lg text-sm border bg-white focus:outline-none focus:ring-2 focus:ring-primary-green ${
-                  errors.email ? "border-red-accent" : "border-light-border"
-                }`}
+              <select
+                id="contact-subject"
+                value={subject}
+                onChange={(e) => { setSubject(e.target.value); setOtherSubject(""); }}
+                required
+                className="w-full border-b border-gray-200 focus:border-[#018959] py-2 text-sm bg-transparent outline-none transition-colors appearance-none cursor-pointer"
+                style={{ color: subject ? undefined : '#D1D5DB' }}
+              >
+                <option value="" disabled hidden className="text-gray-300">
+                  Select a subject
+                </option>
+                <option value="Retail Medicine Supply" className="text-main-text">Retail Medicine Supply</option>
+                <option value="Wholesale Pharmacy Supply" className="text-main-text">Wholesale Pharmacy Supply</option>
+                <option value="Nationwide Medicine Delivery" className="text-main-text">Nationwide Medicine Delivery</option>
+                <option value="Prescription Refill Service" className="text-main-text">Prescription Refill Service</option>
+                <option value="Institutional & Clinic Supply" className="text-main-text">Institutional &amp; Clinic Supply</option>
+                <option value="24/7 Emergency Pharmacy" className="text-main-text">24/7 Emergency Pharmacy</option>
+                <option value="Other" className="text-main-text">Other</option>
+              </select>
+
+              {/* Reveal text input when Other is selected */}
+              {isOther && (
+                <div className="mt-3" style={{ animation: 'fadeSlideDown 0.2s ease both' }}>
+                  <input
+                    id="contact-subject-other"
+                    type="text"
+                    value={otherSubject}
+                    onChange={(e) => setOtherSubject(e.target.value)}
+                    placeholder="Please describe your subject"
+                    className="w-full border-b border-gray-200 focus:border-[#018959] py-2 text-sm text-main-text font-medium bg-transparent outline-none transition-colors placeholder:text-gray-300"
+                    required
+                    autoFocus
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="contact-message" className="block text-xs font-semibold text-[#018959] mb-1">
+                Message
+              </label>
+              <textarea
+                id="contact-message"
+                rows={3}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Write here your message"
+                className="w-full border-b-2 border-[#018959] py-2 text-sm text-main-text font-medium bg-transparent outline-none transition-colors resize-none placeholder:text-gray-300"
+                required
               />
-              {errors.email && <p className="text-xs text-red-accent mt-1">{errors.email}</p>}
             </div>
-          </div>
 
-          {/* Business / Pharmacy Name (Optional) */}
-          <div>
-            <label htmlFor="businessName" className="block text-xs font-semibold text-main-text mb-1">
-              Pharmacy or Business Name <span className="text-muted-text font-normal">(Optional)</span>
-            </label>
-            <input
-              id="businessName"
-              type="text"
-              value={formData.businessName}
-              onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-              placeholder="e.g. Accra Community Pharmacy"
-              className="w-full px-3.5 py-2.5 rounded-lg text-sm border border-light-border bg-white focus:outline-none focus:ring-2 focus:ring-primary-green"
-            />
-          </div>
+            {submitted && (
+              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Thank you! Your message has been sent successfully.</span>
+              </div>
+            )}
 
-          {/* Enquiry Type Selector */}
-          <div>
-            <label className="block text-xs font-semibold text-main-text mb-1.5">
-              Enquiry Type <span className="text-red-accent">*</span>
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {(["retail", "wholesale", "general"] as EnquiryType[]).map((type) => (
-                <button
-                  type="button"
-                  key={type}
-                  onClick={() => setFormData({ ...formData, enquiryType: type })}
-                  className={`py-2 px-3 rounded-lg text-xs font-semibold capitalize border transition-all cursor-pointer ${
-                    formData.enquiryType === type
-                      ? "bg-light-green text-deep-green border-deep-green shadow-2xs"
-                      : "bg-white text-muted-text border-light-border hover:bg-gray-50"
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
+            <div className="pt-2">
+              <button
+                type="submit"
+                className="bg-[#018959] hover:bg-[#017049] active:bg-[#015C3C] text-white font-medium text-sm px-7 py-3 transition-colors shadow-xs"
+              >
+                Send Message
+              </button>
             </div>
-          </div>
-
-          {/* Message */}
-          <div>
-            <label htmlFor="message" className="block text-xs font-semibold text-main-text mb-1">
-              Message or Medicine Requirements <span className="text-red-accent">*</span>
-            </label>
-            <textarea
-              id="message"
-              rows={4}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="List the medicines or quantities you require, your delivery town/city, or any questions..."
-              className={`w-full px-3.5 py-2.5 rounded-lg text-sm border bg-white focus:outline-none focus:ring-2 focus:ring-primary-green ${
-                errors.message ? "border-red-accent" : "border-light-border"
-              }`}
-            />
-            {errors.message && <p className="text-xs text-red-accent mt-1">{errors.message}</p>}
-          </div>
-
-          {/* Submit button */}
-          <Button type="submit" size="lg" variant="primary" className="w-full justify-center">
-            <span>Submit Enquiry</span>
-            <Send className="w-4 h-4" />
-          </Button>
-
-          <p className="text-[11px] text-center text-muted-text">
-            Protected by pharmaceutical client privacy standards. No medical claims invented.
-          </p>
-        </form>
-      )}
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

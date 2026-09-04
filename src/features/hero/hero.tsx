@@ -2,8 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Pacifico } from "next/font/google";
 import { HeroIllustration } from "./hero-illustration";
 import { HeroDivider } from "./hero-divider";
+
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export function Hero() {
   return (
@@ -26,19 +32,22 @@ export function Hero() {
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           {/* Left Column: Minimal, bold stacked typography */}
-          <div className="lg:col-span-5 flex flex-col items-start space-y-6">
-            {/* Brand Accent Bar */}
-            <div className="w-14 h-1.5 bg-primary-green rounded-full" />
+          <div className="lg:col-span-5 flex flex-col items-start">
+            {/* Brand Accent Bar tucked right above 'we' */}
+            <div className="w-12 sm:w-14 h-1.5 bg-primary-green rounded-full mb-2 sm:mb-2.5" />
 
-            {/* 3-line clean stacked headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-main-text leading-[1.14] tracking-tight">
+            {/* Stacked headline with 'we' in Pacifico red script */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-bold text-main-text leading-[1.12] tracking-tight">
+              <span className={`${pacifico.className} block text-2xl sm:text-3xl lg:text-[34px] text-red-accent font-normal tracking-normal mb-1`}>
+                we
+              </span>
+              Supply<br />
               Medicines<br />
-              Supplied<br />
               Across Ghana
             </h1>
 
             {/* Non-intrusive faded supporting phrase with subtle red dotted highlight */}
-            <p className="text-sm sm:text-[15px] text-gray-500 font-normal leading-relaxed max-w-sm">
+            <p className="text-sm sm:text-[15px] text-gray-500 font-normal leading-relaxed max-w-sm mt-5 sm:mt-6">
 
               <span className="text-red-accent/90 border-b border-dotted border-red-accent/40 pb-0.5 font-medium">
                 Retail and wholesale
@@ -47,9 +56,9 @@ export function Hero() {
             </p>
 
             {/* Solid Red CTA matching the header */}
-            <div className="pt-2">
+            <div className="pt-5 sm:pt-6">
               <Link
-                href="/wholesale"
+                href="/contact"
                 className="group inline-flex items-center gap-2.5 text-sm sm:text-base font-semibold tracking-tight px-5 py-3 bg-red-accent text-white hover:bg-red-accent-hover transition-colors"
               >
                 <span>Request supply</span>

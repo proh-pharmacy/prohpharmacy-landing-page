@@ -55,7 +55,7 @@ export function FaqAccordion() {
             >
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <span
-                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-[13px] font-bold shrink-0 transition-colors ${
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-[13px] font-medium shrink-0 transition-colors ${
                     isOpen
                       ? "bg-primary-green text-white"
                       : "bg-[#E5F4EC] text-primary-green"
@@ -63,7 +63,7 @@ export function FaqAccordion() {
                 >
                   {String(idx + 1).padStart(2, "0")}
                 </span>
-                <span className="font-bold text-main-text text-sm sm:text-base md:text-[17px] tracking-tight">
+                <span className="font-medium text-main-text text-sm sm:text-base md:text-[17px] tracking-tight">
                   {faq.question}
                 </span>
               </div>

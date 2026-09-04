@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#033713] text-white border-t border-white/10 pt-16 pb-12">
+    <footer className="bg-[#022619] text-white border-t border-white/10 pt-16 pb-12">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-white/10">
           {/* Col 1: Brand & Bio */}
@@ -16,10 +16,13 @@ export function Footer() {
               individuals and pharmacies across Ghana with dependable nationwide delivery.
             </p>
             <div className="pt-2">
-              <span className="inline-flex items-center gap-2 text-xs bg-white/10 px-3 py-1.5 rounded-md text-white/90">
-                <span className="w-2 h-2 rounded-full bg-bright-green"></span>
-                Ghana Nationwide Distribution
-              </span>
+              <Link
+                href={siteConfig.routes.quote}
+                className="group inline-flex items-center gap-2 text-sm font-semibold tracking-tight px-4.5 py-2.5 bg-red-accent text-white hover:bg-red-accent-hover transition-colors"
+              >
+                <span>Request Supply</span>
+                <ArrowUpRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
             </div>
           </div>
 

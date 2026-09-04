@@ -26,7 +26,7 @@ export function AboutContent() {
             width={500}
             alt="About Proh Pharmacy"
             src="/images/about_image.png"
-            className="rounded-2xl object-cover w-full h-auto aspect-square border border-light-border/80"
+            className="rounded-2xl object-cover w-full h-auto aspect-square border-0 shadow-none"
             priority
           />
         </div>
@@ -115,38 +115,29 @@ export function AboutContent() {
 
         {/* 3 Regulatory Badges: FDA Ghana, GSA, ORC */}
         <div className="flex items-center justify-center md:justify-end w-full md:col-span-2 pt-6 md:pt-0">
-          <div className="relative w-full max-w-[320px] h-[260px] sm:h-[290px] flex items-center justify-center">
-            {/* 1. FDA Ghana Official Logo */}
+          {/* Mobile: simple row of badges */}
+          <div className="flex md:hidden items-center justify-center gap-4 w-full">
+            <div className="w-24 aspect-square rounded-full overflow-hidden border border-light-border/80 bg-white p-3 flex items-center justify-center">
+              <Image src="/images/fda_ghana.png" alt="Food and Drugs Authority Ghana" width={200} height={200} className="w-full h-full object-contain" />
+            </div>
+            <div className="w-24 aspect-square rounded-full overflow-hidden border border-light-border/80 bg-white p-3 flex items-center justify-center">
+              <Image src="/images/gsa_ghana.png" alt="Ghana Standards Authority" width={200} height={200} className="w-full h-full object-contain" />
+            </div>
+            <div className="w-24 aspect-square rounded-full overflow-hidden border border-light-border/80 bg-white p-3 flex items-center justify-center">
+              <Image src="/images/orc_ghana.png" alt="Office of the Registrar of Companies Ghana" width={200} height={200} className="w-full h-full object-contain" />
+            </div>
+          </div>
+
+          {/* Desktop: overlapping cluster */}
+          <div className="hidden md:flex relative w-full max-w-[320px] h-[260px] sm:h-[290px] items-center justify-center">
             <div className="absolute top-0 left-2 w-32 sm:w-36 aspect-square rounded-full overflow-hidden border border-light-border/80 bg-white p-4 flex items-center justify-center transform -rotate-3 hover:rotate-0 transition-transform duration-200 z-10">
-              <Image
-                src="/images/fda_ghana.png"
-                alt="Food and Drugs Authority Ghana"
-                width={300}
-                height={300}
-                className="w-full h-full object-contain"
-              />
+              <Image src="/images/fda_ghana.png" alt="Food and Drugs Authority Ghana" width={300} height={300} className="w-full h-full object-contain" />
             </div>
-
-            {/* 2. GSA Official Logo */}
             <div className="absolute top-6 right-2 w-32 sm:w-36 aspect-square rounded-full overflow-hidden border border-light-border/80 bg-white p-4 flex items-center justify-center transform rotate-3 hover:rotate-0 transition-transform duration-200 z-20">
-              <Image
-                src="/images/gsa_ghana.png"
-                alt="Ghana Standards Authority"
-                width={400}
-                height={200}
-                className="w-full h-full object-contain"
-              />
+              <Image src="/images/gsa_ghana.png" alt="Ghana Standards Authority" width={400} height={200} className="w-full h-full object-contain" />
             </div>
-
-            {/* 3. ORC Official Logo */}
             <div className="absolute bottom-0 left-12 w-32 sm:w-36 aspect-square rounded-full overflow-hidden border border-light-border/80 bg-white p-4 flex items-center justify-center transform translate-y-1 hover:translate-y-0 transition-transform duration-200 z-30">
-              <Image
-                src="/images/orc_ghana.png"
-                alt="Office of the Registrar of Companies Ghana"
-                width={400}
-                height={200}
-                className="w-full h-full object-contain"
-              />
+              <Image src="/images/orc_ghana.png" alt="Office of the Registrar of Companies Ghana" width={400} height={200} className="w-full h-full object-contain" />
             </div>
           </div>
         </div>

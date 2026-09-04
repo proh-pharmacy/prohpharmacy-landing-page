@@ -239,7 +239,7 @@ export function DeliveryContent() {
           </div>
 
           {/* Right Column: Interactive Ghana SVG Map (Lime unrounded container flush with left column) */}
-          <div className="lg:col-span-6 flex flex-col justify-center w-full h-full min-h-[480px]">
+          <div className="lg:col-span-6 flex flex-col justify-center w-full h-full min-h-[320px] sm:min-h-[420px] lg:min-h-[480px]">
             <GhanaMap
               regions={REGIONS_DATA}
               overviewClassName="w-full h-full"

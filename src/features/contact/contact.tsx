@@ -1,29 +1,25 @@
 import React from "react";
-import { SectionHeader } from "@/components/ui/section-header";
-import { ContactInfo } from "./contact-info";
 import { ContactForm } from "./contact-form";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-16 md:py-24 bg-[#F8FCFA] border-t border-light-border/60">
+    <section id="contact" className="pt-10 pb-16 sm:pt-14 sm:pb-20 md:pt-16 md:pb-24 bg-[#F4F9F6] border-b border-light-border/60">
       <div className="container-custom">
-        <SectionHeader
-          eyebrow="Communication & Intake"
-          title="Contact Proh Pharmacy"
-          description="Send your medicine request, request a wholesale price list, or enquire about nationwide delivery to your region."
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Verified contact & placeholders */}
-          <div className="lg:col-span-5">
-            <ContactInfo />
+        {/* Clean Minimal Section Header matching Our Services */}
+        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2.5">
+            <span className="w-6 h-0.5 bg-primary-green rounded-full" />
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-main-text">
+              Contact Us
+            </h2>
           </div>
-
-          {/* Right Column: Contact form */}
-          <div className="lg:col-span-7">
-            <ContactForm />
-          </div>
+          <p className="text-xs sm:text-sm text-gray-500 font-normal mt-2 leading-relaxed">
+            Send your medicine request, request a wholesale quotation, or enquire about nationwide delivery across Ghana.
+          </p>
         </div>
+
+        {/* Unified Contact Information & Underline-Input Form Card */}
+        <ContactForm />
       </div>
     </section>
   );

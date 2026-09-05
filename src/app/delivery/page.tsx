@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Prescription delivery nationwide",
     "Ghana pharmaceutical transport",
   ],
+  alternates: {
+    canonical: "https://prohpharmacy.com/delivery",
+  },
 };
 
 export default function DeliveryPage() {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { TopBar } from "@/components/layout/top-bar";
 import { Header } from "@/components/layout/header";
@@ -14,6 +14,12 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#022619",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -32,11 +38,25 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Proh Pharmacy" }],
   metadataBase: new URL("https://prohpharmacy.com"),
+  alternates: {
+    canonical: "https://prohpharmacy.com/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Proh Pharmacy | Retail & Wholesale Medicine Delivery in Ghana",
     description:
       "Reliable retail and wholesale medicine supply to individuals and pharmacies with nationwide delivery across Ghana.",
-    url: "https://prohpharmacy.com",
+    url: "https://prohpharmacy.com/",
     siteName: "Proh Pharmacy",
     images: [
       {
@@ -48,6 +68,13 @@ export const metadata: Metadata = {
     ],
     locale: "en_GH",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Proh Pharmacy | Retail & Wholesale Medicine Delivery in Ghana",
+    description:
+      "Reliable retail and wholesale medicine supply to individuals and pharmacies with nationwide delivery across Ghana.",
+    images: ["/images/prohpharmacy_icon.png"],
   },
   icons: {
     icon: [

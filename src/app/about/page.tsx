@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     "Medicine distributor Ghana",
     "Pharmacy partner Accra",
   ],
+  alternates: {
+    canonical: "https://prohpharmacy.com/about",
+  },
 };
 
 export default function AboutPage() {

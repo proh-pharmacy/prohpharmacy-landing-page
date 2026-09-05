@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Bulk medicine supply Ghana",
     "Pharmaceutical distributor",
   ],
+  alternates: {
+    canonical: "https://prohpharmacy.com/wholesale",
+  },
 };
 
 export default function WholesalePage() {

@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Wholesale medicine quote",
     "Pharmacy WhatsApp Ghana",
   ],
+  alternates: {
+    canonical: "https://prohpharmacy.com/contact",
+  },
 };
 
 export default function ContactPage() {

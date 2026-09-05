@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     "Wholesale pharmacy supply",
     "Prescription delivery Ghana",
   ],
+  alternates: {
+    canonical: "https://prohpharmacy.com/services",
+  },
 };
 
 export default function ServicesPage() {

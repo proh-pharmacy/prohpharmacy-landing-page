@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowUpRight } from "lucide-react";
+import { Plus, Minus, ArrowUpRight } from "lucide-react";
 import { FaqItem } from "@/types";
 
 export function FaqAccordion() {
@@ -50,7 +50,7 @@ export function FaqAccordion() {
             <button
               type="button"
               onClick={() => toggle(idx)}
-              className="w-full px-5 py-4 sm:px-6 sm:py-5 text-left flex items-center justify-between gap-4 cursor-pointer transition-colors"
+              className="w-full px-5 py-4 sm:px-6 sm:py-5 text-left flex items-center justify-between gap-4 cursor-pointer transition-colors group"
               aria-expanded={isOpen}
             >
               <div className="flex items-center gap-3.5 sm:gap-4">
@@ -69,21 +69,47 @@ export function FaqAccordion() {
               </div>
 
               <span
-                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                   isOpen
-                    ? "bg-light-green text-primary-green rotate-180"
-                    : "bg-gray-100 text-gray-400 hover:bg-light-green hover:text-primary-green"
+                    ? "bg-light-green text-primary-green"
+                    : "bg-gray-100 text-gray-500 group-hover:bg-light-green group-hover:text-primary-green"
                 }`}
               >
-                <ChevronDown className="w-4 h-4" />
+                <div className="relative w-4 h-4 flex items-center justify-center">
+                  <Plus
+                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 absolute transition-all duration-300 ease-out ${
+                      isOpen
+                        ? "rotate-90 opacity-0 scale-50"
+                        : "rotate-0 opacity-100 scale-100"
+                    }`}
+                  />
+                  <Minus
+                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 absolute transition-all duration-300 ease-out ${
+                      isOpen
+                        ? "rotate-0 opacity-100 scale-100"
+                        : "-rotate-90 opacity-0 scale-50"
+                    }`}
+                  />
+                </div>
               </span>
             </button>
 
-            {isOpen && (
-              <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-light-border/40 pl-[52px] sm:pl-[64px]">
-                {faq.answer}
+            {/* Smooth animated height expansion */}
+            <div
+              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div
+                  className={`px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-light-border/40 pl-[52px] sm:pl-[64px] transition-opacity duration-300 ease-out ${
+                    isOpen ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {faq.answer}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         );
       })}

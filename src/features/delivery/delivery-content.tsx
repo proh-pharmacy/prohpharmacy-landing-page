@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Check, Clock } from "lucide-react";
 import { GhanaMap, RegionInfo } from "./ghana-map";
 import { DeliveryDivider } from "./delivery-divider";
+import { Reveal } from "@/components/ui/reveal";
 
 // Proh Pharmacy's authentic ground network
 const REGIONS_DATA: RegionInfo[] = [
@@ -140,19 +141,22 @@ export function DeliveryContent() {
 
       <div className="container-custom">
         {/* Clean Minimal Section Header Centered */}
-        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2.5">
-            <span className="w-6 h-0.5 bg-[#018959] rounded-full" />
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-              Where We Deliver To
-            </h2>
+        <Reveal direction="up" distance={20} duration={500}>
+          <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
+            <div className="inline-flex items-center gap-2.5">
+              <span className="w-6 h-0.5 bg-[#018959] rounded-full" />
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                Where We Deliver To
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-zinc-300/90 font-normal mt-2 leading-relaxed">
+              We deploy 5 dedicated trekking vans delivering genuine medicines to healthcare facilities and pharmacies across Ghana.
+            </p>
           </div>
-          <p className="text-xs sm:text-sm text-zinc-300/90 font-normal mt-2 leading-relaxed">
-            We deploy 5 dedicated trekking vans delivering genuine medicines to healthcare facilities and pharmacies across Ghana.
-          </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+        <Reveal direction="up" distance={24} duration={600} delay={100}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
           {/* Left Column: Authentic Proh Pharmacy Delivery Coverage (Borderless deep green panel) */}
           <div className="lg:col-span-6 w-full h-full flex flex-col justify-between bg-[#011c12] border-0 rounded-none p-5 sm:p-6 shadow-none">
             {/* 1. Available Regions Section */}
@@ -248,7 +252,8 @@ export function DeliveryContent() {
             />
           </div>
         </div>
-      </div>
+      </Reveal>
+    </div>
 
       {/* Wave divider transitioning smoothly into FAQ */}
       <DeliveryDivider />

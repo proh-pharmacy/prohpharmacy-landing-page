@@ -31,7 +31,7 @@ export const siteConfig = {
     wholesale: "/wholesale",
     delivery: "/delivery",
     contact: "/contact",
-    quote: "/contact?type=wholesale#contact-form",
+    quote: "/contact?type=wholesale",
     staffPortal: "https://app.prohpharmacy.com", // Ready, kept hidden until portal launch
   },
 

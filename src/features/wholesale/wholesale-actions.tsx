@@ -9,21 +9,21 @@ export function WholesaleActions() {
       desc: "Submit your estimated requirements and receive an itemized wholesale pricing quote.",
       icon: FileSpreadsheet,
       actionText: "Request Quotation",
-      href: "/contact?type=wholesale#contact-form",
+      href: "/contact?type=wholesale",
     },
     {
       title: "Send a Medicine List",
       desc: "Already have a restocking or procurement list prepared? Send it directly to our intake team.",
       icon: Send,
       actionText: "Submit Medicine List",
-      href: "/contact?type=wholesale#contact-form",
+      href: "/contact?type=wholesale",
     },
     {
       title: "Contact the Sales Team",
       desc: "Speak with our pharmaceutical account representatives regarding ongoing supply contracts.",
       icon: Users,
       actionText: "Contact Sales Team",
-      href: "/contact?type=wholesale#contact-form",
+      href: "/contact?type=wholesale",
     },
   ];
 

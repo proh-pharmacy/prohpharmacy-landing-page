@@ -52,7 +52,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm text-white/80">
               <li>
-                <Link href="/services#retail" className="hover:text-white transition-colors">
+                <Link href="/services" className="hover:text-white transition-colors">
                   Retail Medicine Supply
                 </Link>
               </li>
@@ -117,10 +117,10 @@ export function Footer() {
           <p>© 2026 Proh Pharmacy. All rights reserved.</p>
           
           <div className="flex flex-wrap items-center gap-6">
-            <Link href="/contact#legal" className="hover:text-white transition-colors">
+            <Link href="/contact" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/contact#legal" className="hover:text-white transition-colors">
+            <Link href="/contact" className="hover:text-white transition-colors">
               Terms & Conditions
             </Link>
             

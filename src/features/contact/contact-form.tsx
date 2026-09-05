@@ -31,7 +31,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="bg-white p-3.5 sm:p-4 border border-light-border/60 max-w-5xl mx-auto">
+    <div id="contact-form" className="bg-white p-3.5 sm:p-4 border border-light-border/60 max-w-5xl mx-auto scroll-mt-24">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch">
         {/* Left Column: Green Tint Direct Contact Information Card (Matching Landing Page Green) */}
         <div className="md:col-span-5 bg-gradient-to-br from-[#018959] to-[#016843] p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between min-h-[400px] sm:min-h-[460px]">

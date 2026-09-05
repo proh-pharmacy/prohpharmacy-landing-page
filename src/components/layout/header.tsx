@@ -27,11 +27,21 @@ export function Header() {
     setIsOpen(false);
   };
 
+  const isHome = pathname === "/";
+  const headerClasses = isHome
+    ? isScrolled
+      ? "sticky top-0 z-40 w-full -mb-18 md:-mb-[80px] bg-white/90 backdrop-blur-md border-b border-primary-green/20 shadow-xs transition-all duration-300 ease-out"
+      : "sticky top-0 z-40 w-full -mb-18 md:-mb-[80px] bg-transparent border-b border-transparent shadow-none transition-all duration-300 ease-out"
+    : `sticky top-0 z-40 w-full transition-all duration-150 bg-white/90 backdrop-blur-md ${
+        isScrolled ? "border-b border-primary-green/30" : "border-b border-primary-green/20"
+      }`;
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 8);
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -58,11 +68,7 @@ export function Header() {
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-40 w-full transition-all duration-150 bg-white/90 backdrop-blur-md ${
-          isScrolled ? "border-b border-primary-green/30" : "border-b border-primary-green/20"
-        }`}
-      >
+      <header className={headerClasses}>
         <div className="container-custom flex items-center justify-between h-18 md:h-[80px]">
           {/* Minimal Logo Wordmark */}
           <Logo size="md" />

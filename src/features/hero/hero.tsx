@@ -13,19 +13,19 @@ const pacifico = Pacifico({
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden min-h-[480px] md:min-h-[540px] lg:min-h-[580px] flex items-center pt-10 pb-14 md:pt-14 md:pb-20">
-      {/* Background Banner spanning across the entire hero section */}
-      <div className="absolute inset-0 -z-10 pointer-events-none select-none">
+    <section className="relative overflow-hidden min-h-[550px] md:min-h-[620px] lg:min-h-[660px] flex items-center pt-24 pb-14 sm:pt-28 md:pt-32 md:pb-20">
+      {/* Background Banner spanning across the entire hero section with subtle optical blur */}
+      <div className="absolute inset-0 -z-10 pointer-events-none select-none overflow-hidden">
         <Image
           src="/images/hero_bg_alternate_with_map.png"
           alt="Pharmaceutical delivery geometric pattern"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right md:object-center"
+          className="object-cover object-right md:object-center blur-[1.5px] scale-[1.02]"
         />
-        {/* Soft vignette to maintain crisp typography readability */}
-        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent lg:via-white/30" />
+        {/* Crisp original vignette allowing the map and pattern to pop cleanly */}
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/70 to-transparent lg:via-white/20" />
       </div>
 
       {/* Centered snug container bringing text and image close together */}

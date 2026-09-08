@@ -7,26 +7,26 @@ export const siteConfig = {
     "Proh Pharmacy provides dependable retail and wholesale medicine supply to individuals and pharmacies, with convenient delivery across Ghana.",
   topBarMessage: "Retail and wholesale medicine delivery anywhere in Ghana",
 
-  // Contact details & clearly identified placeholders
+  // Contact details
   contact: {
     email: "info@prohpharmacy.com",
-    phoneDisplay: "+233 (0) XX XXX XXXX",
-    phoneHref: "tel:+233000000000",
-    phonePlaceholderNote: "Official phone line to be confirmed",
-    whatsappDisplay: "+233 (0) XX XXX XXXX",
-    whatsappHref: "https://wa.me/233000000000?text=Hello%20Proh%20Pharmacy,%20I%20would%20like%20to%20make%20an%20enquiry.",
-    whatsappPlaceholderNote: "WhatsApp business number to be confirmed",
-    address: "Accra, Ghana",
-    addressPlaceholderNote: "Registered facility & distribution hub location to be confirmed",
-    openingHours: "Mon - Sat: 8:00 AM - 8:00 PM",
-    openingHoursNote: "Official operational hours to be confirmed",
-    googleMapsEmbedUrl: "", // Map embed placeholder
+    phoneDisplay: "+233 53 474 0592",
+    phoneHref: "tel:+233534740592",
+    phoneSecondaryDisplay: "+233 53 884 6873",
+    phoneSecondaryHref: "tel:+233538846873",
+    whatsappDisplay: "+233 53 474 0592",
+    whatsappHref: "https://wa.me/233534740592?text=Hello%20Proh%20Pharmacy,%20I%20would%20like%20to%20make%20an%20enquiry.",
+    address: "Laterbiokorshie (Appiah Danquah) & 8 Branches in Accra",
+    addressDigital: "A24/9 (Laterbiokorshie)",
+    openingHours: "24/7 Service Available (Key Branches Open 24 Hours)",
+    googleMapsEmbedUrl: "",
   },
 
   // Internal and external portal routes
   routes: {
     home: "/",
     about: "/about",
+    branches: "/branches",
     services: "/services",
     wholesale: "/wholesale",
     delivery: "/delivery",
@@ -39,6 +39,7 @@ export const siteConfig = {
   navLinks: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "Branches", href: "/branches" },
     { label: "Services", href: "/services" },
     { label: "Delivery", href: "/delivery" },
     { label: "Contact", href: "/contact" },

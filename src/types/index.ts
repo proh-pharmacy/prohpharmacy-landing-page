@@ -36,3 +36,23 @@ export interface OrderingStep {
   title: string;
   description: string;
 }
+
+export interface Branch {
+  id: string;
+  name: string;
+  shortName?: string;
+  category: "retail" | "wholesale" | "annex" | "mart";
+  location: string;
+  localArea?: string;
+  digitalAddress?: string;
+  phones: string[];
+  whatsapp?: string;
+  email?: string;
+  hours: string;
+  is24Hours?: boolean;
+  services: string[];
+  image?: string;
+  badge?: string;
+  featured?: boolean;
+}
+

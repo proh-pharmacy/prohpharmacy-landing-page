@@ -43,14 +43,26 @@ export function AboutContent() {
               </p>
 
               <p>
-                We currently operate 8 retail branches, 1 modern diagnostic laboratory, and 2 wholesale branches,
-                delivering professional dispensing services to individual patients and bulk replenishment to partner facilities.
+                We currently operate{" "}
+                <Link href="/branches" className="text-primary-green font-semibold underline hover:text-deep-green">
+                  8 retail branches
+                </Link>
+                , 1 modern diagnostic laboratory, and 2 wholesale branches, delivering professional dispensing services to individual patients and bulk replenishment to partner facilities.
               </p>
 
               <p>
                 Proh Pharmacy compiles everything patients, clinics, and pharmacies need for timely medication access,
                 trusted clinical advice, and uninterrupted pharmaceutical supply.
               </p>
+              
+              <div className="pt-2">
+                <Link
+                  href="/branches"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary-green hover:text-deep-green transition-colors"
+                >
+                  <span>Explore our branch network &amp; contacts &rarr;</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

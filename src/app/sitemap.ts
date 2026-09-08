@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://prohpharmacy.com";
-  const routes = ["", "/about", "/services", "/wholesale", "/delivery", "/contact"];
+  const routes = ["", "/about", "/branches", "/services", "/wholesale", "/delivery", "/contact"];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,

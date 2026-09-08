@@ -47,18 +47,19 @@ export function ContactForm() {
 
             <div className="mt-8 sm:mt-10 space-y-5">
               {/* Phone Lines */}
-              <a
-                href={siteConfig.contact.phoneHref}
-                className="flex items-start gap-3.5 group transition-opacity hover:opacity-90"
-              >
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-white/20 transition-colors">
+              <div className="flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
                   <Phone className="w-4 h-4 text-white" />
                 </div>
                 <div className="text-xs sm:text-sm text-white/90 leading-snug">
-                  <div className="font-semibold">+233 24 123 4567</div>
-                  <div className="mt-0.5 text-white/75">+233 50 987 6543</div>
+                  <a href={siteConfig.contact.phoneHref} className="font-semibold block hover:underline">
+                    {siteConfig.contact.phoneDisplay} <span className="text-[11px] font-normal text-white/70">(Laterbiokorshie)</span>
+                  </a>
+                  <a href={siteConfig.contact.phoneSecondaryHref} className="mt-0.5 block text-white/80 hover:underline">
+                    {siteConfig.contact.phoneSecondaryDisplay} <span className="text-[11px] font-normal text-white/70">(Wholesale Hub)</span>
+                  </a>
                 </div>
-              </a>
+              </div>
 
               {/* Email */}
               <a
@@ -84,17 +85,18 @@ export function ContactForm() {
                   <MessageCircle className="w-4 h-4 text-[#34D399]" />
                 </div>
                 <div className="text-xs sm:text-sm text-white/90 font-medium">
-                  Chat on WhatsApp
+                  Chat on WhatsApp ({siteConfig.contact.whatsappDisplay})
                 </div>
               </a>
 
               {/* Location */}
-              <div className="flex items-center gap-3.5">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-white" />
                 </div>
                 <div className="text-xs sm:text-sm text-white/90">
-                  {siteConfig.contact.address}
+                  <p className="font-medium">8 Locations in Greater Accra</p>
+                  <p className="text-[11px] text-white/75 mt-0.5">Laterbiokorshie, Kwashieman, Fadama, Pokuase &amp; more</p>
                 </div>
               </div>
             </div>

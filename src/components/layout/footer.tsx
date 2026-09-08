@@ -74,10 +74,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Contact & Placeholders */}
+          {/* Col 4: Contact & Locations */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-bright-green">
-              Contact & Location
+              Contact &amp; Branches
             </h4>
             <div className="space-y-3 text-sm text-white/80">
               <a
@@ -90,22 +90,30 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-bright-green flex-shrink-0 mt-0.5" />
                 <div>
-                  <p>{siteConfig.contact.phoneDisplay}</p>
-                  <p className="text-[11px] text-white/50">{siteConfig.contact.phonePlaceholderNote}</p>
+                  <a href={siteConfig.contact.phoneHref} className="hover:text-white font-medium">
+                    {siteConfig.contact.phoneDisplay} (Laterbiokorshie)
+                  </a>
+                  <p className="text-[11px] text-white/60">
+                    <a href={siteConfig.contact.phoneSecondaryHref} className="hover:text-white">
+                      {siteConfig.contact.phoneSecondaryDisplay} (Kwashieman Hub)
+                    </a>
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-bright-green flex-shrink-0 mt-0.5" />
                 <div>
-                  <p>{siteConfig.contact.address}</p>
-                  <p className="text-[11px] text-white/50">{siteConfig.contact.addressPlaceholderNote}</p>
+                  <p className="font-medium">8 Locations in Greater Accra</p>
+                  <Link href="/branches" className="text-[11px] text-bright-green hover:underline">
+                    View Laterbiokorshie, Kwashieman, Fadama &amp; more &rarr;
+                  </Link>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
                 <Clock className="w-4 h-4 text-bright-green flex-shrink-0 mt-0.5" />
                 <div>
-                  <p>{siteConfig.contact.openingHours}</p>
-                  <p className="text-[11px] text-white/50">{siteConfig.contact.openingHoursNote}</p>
+                  <p>24/7 Dispensing Available</p>
+                  <p className="text-[11px] text-white/60">Selected retail &amp; marts open 24 hours</p>
                 </div>
               </div>
             </div>

@@ -67,8 +67,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Rider sitting immediately adjacent to the text */}
-          <div className="lg:col-span-7 flex justify-start items-center lg:-ml-2">
+          {/* Right Column: Oversized artwork aligns its route pins over the background Ghana map */}
+          <div className="lg:col-span-7 flex justify-start items-center lg:-ml-14">
             <HeroIllustration />
           </div>
         </div>

@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { branchesData } from "@/config/branches";
 import { BranchCard } from "./branch-card";
+import { Reveal } from "@/components/ui/reveal";
 
 interface BranchesSectionProps {
   title?: string;
@@ -19,52 +21,51 @@ export function BranchesSection({
   const displayedBranches = branchesData.slice(0, limit);
 
   return (
-    <section className="py-12 sm:py-16 bg-[#F4F9F6] border-b border-light-border/60">
-      <div className="container-custom @container">
-        <div className="flex flex-col @lg:flex-row @lg:items-end justify-between mb-8 sm:mb-10 gap-3">
-          <div className="max-w-xl">
-            <span className="text-[11px] font-semibold text-primary-green uppercase tracking-wider">
-              Storefronts &amp; Locations
-            </span>
-            <h2 className="text-xl @sm:text-2xl font-bold tracking-tight text-main-text mt-1">
+    <section className="py-14 md:py-20 bg-[#F4F8F5] border-b border-light-border/60 relative overflow-hidden">
+      <div className="container-custom relative z-10">
+        {/* Clean Subtle Centered Section Header Matching WordPress Reference */}
+        <Reveal direction="up" distance={20} duration={500}>
+          <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12 relative z-10">
+            <h2 className="text-2xl sm:text-[28px] font-medium tracking-normal text-[#2C3338]">
               {title}
             </h2>
-            <p className="text-xs text-gray-500 font-normal mt-1.5 leading-relaxed">
+            <p className="text-xs sm:text-[13px] text-[#787C82] font-normal mt-2 leading-relaxed">
               {subtitle}
             </p>
           </div>
+        </Reveal>
 
-          {showViewAll && (
-            <Link
-              href="/branches"
-              className="text-xs font-semibold text-primary-green hover:text-deep-green self-start @lg:self-auto transition-colors"
-            >
-              Explore All 8 Branches &rarr;
-            </Link>
-          )}
-        </div>
-
-        {/* Standard Grid Preview */}
-        <div className="grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 gap-5 @sm:gap-6 items-stretch">
-          {displayedBranches.map((branch) => (
-            <div
+        {/* 3-Column Branch Cards Grid Matching Reference Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8 items-start">
+          {displayedBranches.map((branch, idx) => (
+            <Reveal
               key={branch.id}
-              className="transition-transform duration-300 hover:-translate-y-1"
+              direction="up"
+              distance={20}
+              duration={500}
+              delay={idx * 80}
             >
-              <BranchCard branch={branch} />
-            </div>
+              <BranchCard
+                branch={branch}
+                isTopChoice={branch.id === "kwashieman-alang"}
+              />
+            </Reveal>
           ))}
         </div>
 
+        {/* Action Button Link to All Branches */}
         {showViewAll && (
-          <div className="mt-8 text-center">
-            <Link
-              href="/branches"
-              className="inline-block px-5 py-2.5 bg-white hover:bg-gray-50 text-main-text font-semibold text-xs rounded-lg border border-light-border/90 shadow-xs transition-colors"
-            >
-              View All 8 Locations &amp; GPS Codes &rarr;
-            </Link>
-          </div>
+          <Reveal direction="up" distance={15} duration={500} delay={200}>
+            <div className="mt-10 sm:mt-12 text-center">
+              <Link
+                href="/branches"
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-xs border border-[#CCD0D4] hover:border-[#2C3338] hover:text-[#1D2327] text-[#50575E] font-normal text-[10.5px] tracking-widest uppercase transition-colors"
+              >
+                <span>Explore All Locations</span>
+                <ArrowRight className="w-3.5 h-3.5 text-gray-400" />
+              </Link>
+            </div>
+          </Reveal>
         )}
       </div>
     </section>

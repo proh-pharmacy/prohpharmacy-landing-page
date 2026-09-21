@@ -76,32 +76,25 @@ export function ServicesGrid() {
   ];
 
   return (
-    <section className="relative overflow-hidden pt-8 md:pt-12 pb-16 md:pb-24 bg-[#F0F7F3] border-b border-light-border/60">
+    <section className="relative overflow-hidden pt-10 md:pt-14 pb-16 md:pb-24 bg-[#F4F8F5] border-b border-light-border/60">
       <div className="container-custom relative">
         {/* Subtle Pharmacy Background Accents flanking cards */}
         <ServicesBackgroundAccents />
 
-        {/* Ambient Glowing Green Lights Behind Glass Container */}
-        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-80 h-80 rounded-full bg-[#05C075]/16 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 w-80 h-80 rounded-full bg-[#087A2D]/12 blur-3xl pointer-events-none" />
-
-        {/* Clean Minimal Section Header */}
+        {/* Clean Subtle Section Header Matching WordPress Aesthetic */}
         <Reveal direction="up" distance={20} duration={500}>
           <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12 relative z-10">
-            <div className="inline-flex items-center gap-2.5">
-              <span className="w-6 h-0.5 bg-primary-green rounded-full" />
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-main-text">
-                Our Services
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-gray-500 font-normal mt-2 leading-relaxed">
+            <h2 className="text-2xl sm:text-[28px] font-medium tracking-normal text-[#2C3338]">
+              Our Services
+            </h2>
+            <p className="text-xs sm:text-[13px] text-[#787C82] font-normal mt-2 leading-relaxed">
               Explore our range of pharmaceutical services tailored for Ghana
             </p>
           </div>
         </Reveal>
 
-        {/* Frosted Glass Monolithic Grid Card with Glowing Green Tint Lines */}
-        <div className="bg-white/85 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-[#05C075]/25 shadow-[0_4px_24px_rgba(4,94,31,0.04)] overflow-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10">
+        {/* Clean Open Grid: Non-border, non-rounded individual cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 relative z-10 items-stretch">
           {services.map((service, idx) => (
             <ServiceCard
               key={service.id}

@@ -107,102 +107,126 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile Hamburger Toggle Button */}
+          {/* Mobile Hamburger Toggle Button (Architectural Hairline Style) */}
           <button
             onClick={openMenu}
             type="button"
-            className="lg:hidden p-2 rounded-lg text-main-text hover:bg-light-green/60 active:scale-95 transition-all focus:outline-none"
+            className="lg:hidden p-2 border border-gray-200 hover:border-[#2C3338] text-[#2C3338] transition-colors rounded-none focus:outline-none cursor-pointer"
             aria-expanded={isOpen}
             aria-label="Open navigation menu"
           >
-            <Menu className="w-6 h-6 text-main-text" />
+            <Menu className="w-5 h-5" />
           </button>
         </div>
       </header>
 
-      {/* Classic Minimal Fullscreen Mobile Menu with Green Translucent Blur Backdrop (Mounted only during interaction) */}
+      {/* Option 1: Crisp Architectural White Slide-Over Menu */}
       {isRendered && (
-        <div
-          className={`fixed inset-0 z-[100] lg:hidden bg-[#022619]/85 backdrop-blur-xl flex flex-col justify-between p-6 sm:p-8 overflow-hidden transition-transform duration-300 ease-out will-change-transform ${
-            isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"
-          }`}
-          aria-hidden={!isOpen}
-          role="dialog"
-          aria-modal="true"
-        >
-          {/* Subtle Ambient Radial Glow confined inside without negative off-screen bleed */}
-          <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#087A2D]/20 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-[#34D399]/15 blur-3xl pointer-events-none" />
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          {/* Subtle Ambient Backdrop */}
+          <div
+            onClick={closeMenu}
+            aria-hidden="true"
+            className={`fixed inset-0 bg-black/45 backdrop-blur-xs transition-opacity duration-300 cursor-pointer ${
+              isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          />
 
-          {/* Top Bar: Icon Only & Close Button */}
-          <div className="relative z-10 flex items-center justify-between pb-6 border-b border-white/10">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="flex items-center justify-center transition-opacity hover:opacity-90"
-              aria-label="Proh Pharmacy Home"
-            >
-              <Image
-                src="/images/prohpharmacy_icon.png"
-                alt="Proh Pharmacy"
-                width={38}
-                height={38}
-                priority
-                className="object-contain"
-              />
-            </Link>
-
-            <button
-              type="button"
-              onClick={closeMenu}
-              className="p-2.5 rounded-full text-white/80 hover:text-white bg-white/5 hover:bg-white/15 active:scale-95 transition-all focus:outline-none cursor-pointer"
-              aria-label="Close navigation menu"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Middle: Classic Minimal Vertical Nav Links */}
-          <div className="relative z-10 my-auto py-8 max-w-sm w-full mx-auto">
-            <nav className="flex flex-col space-y-2">
-              {siteConfig.navLinks.map((link, idx) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className={`group flex items-center justify-between py-3.5 border-b border-white/10 text-2xl sm:text-3xl font-medium tracking-tight transition-all duration-200 ${
-                      isActive
-                        ? "text-white font-semibold"
-                        : "text-white/75 hover:text-white hover:translate-x-2"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-bright-green animate-pulse shrink-0" />
-                      )}
-                      <span>{link.label}</span>
-                    </div>
-                    <span className="text-xs font-mono text-white/40 group-hover:text-white/80 transition-colors shrink-0">
-                      0{idx + 1}
-                    </span>
-                  </Link>
-                );
-              })}
-
-              {/* Request Supply as the Last Option */}
-              <div className="pt-6">
+          {/* Slide-Over Drawer from Right */}
+          <div
+            className={`fixed top-0 right-0 bottom-0 z-10 w-full max-w-sm sm:max-w-md bg-white border-l border-[#CCD0D4] shadow-2xl flex flex-col justify-between transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+            aria-hidden={!isOpen}
+            role="dialog"
+            aria-modal="true"
+          >
+            {/* Top Bar: Brand Logo & Minimal Hairline Close Button */}
+            <div className="p-5 sm:p-6 border-b border-gray-100 flex items-center justify-between bg-white shrink-0">
+              <div className="flex items-center gap-2.5">
                 <Link
-                  href={siteConfig.routes.quote}
+                  href="/"
                   onClick={closeMenu}
-                  className="group w-full flex items-center justify-between px-6 py-4 bg-red-accent hover:bg-red-accent-hover text-white font-semibold text-lg transition-colors shadow-lg shadow-black/20"
+                  className="flex items-center gap-2"
+                  aria-label="Proh Pharmacy Home"
                 >
-                  <span>Request Supply</span>
-                  <ArrowUpRight className="w-5 h-5 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <Image
+                    src="/images/prohpharmacy_icon.png"
+                    alt="Proh Pharmacy"
+                    width={30}
+                    height={30}
+                    priority
+                    className="object-contain"
+                  />
+                  <span className="text-[12px] font-medium tracking-tight text-[#2C3338] uppercase">
+                    Proh Pharmacy
+                  </span>
                 </Link>
               </div>
-            </nav>
+
+              <button
+                type="button"
+                onClick={closeMenu}
+                className="p-1.5 border border-[#CCD0D4] hover:border-[#2C3338] text-[#50575E] hover:text-[#1D2327] transition-colors rounded-none cursor-pointer"
+                aria-label="Close navigation menu"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Middle: Clean Architectural Vertical Navigation Links */}
+            <div className="p-5 sm:p-6 overflow-y-auto flex-1">
+              <p className="text-[10px] font-normal uppercase tracking-widest text-[#787C82] mb-3">
+                Directory &amp; Navigation
+              </p>
+
+              <nav className="divide-y divide-gray-100 flex flex-col">
+                {siteConfig.navLinks.map((link, idx) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMenu}
+                      className={`group flex items-center justify-between py-3.5 text-base sm:text-[17px] font-medium tracking-normal transition-colors ${
+                        isActive
+                          ? "text-[#087A2D] border-l-2 border-[#2D6A4F] pl-3 -ml-3"
+                          : "text-[#2C3338] hover:text-[#087A2D]"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      <span className="text-[10px] font-mono text-[#8C8F94] group-hover:text-[#2C3338] transition-colors shrink-0">
+                        0{idx + 1}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </nav>
+            </div>
+
+            {/* Bottom Bar: Architectural Service Note & Signature Hairline Button */}
+            <div className="p-5 sm:p-6 border-t border-gray-100 bg-gray-50/50 shrink-0 space-y-4">
+              <div>
+                <p className="text-[11px] text-[#787C82] font-normal leading-relaxed">
+                  Open 24/7 for retail medicine dispensing, wholesale distribution, and nationwide transit.
+                </p>
+                <a
+                  href="tel:0244187892"
+                  className="text-[11.5px] font-mono text-[#2C3338] hover:text-[#087A2D] font-normal block mt-1"
+                >
+                  Direct Support: 0244 187 892
+                </a>
+              </div>
+
+              <Link
+                href={siteConfig.routes.quote}
+                onClick={closeMenu}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#2D6A4F] hover:bg-[#23533E] text-white text-[11px] font-normal tracking-widest uppercase transition-colors rounded-none w-full text-center shadow-2xs"
+              >
+                <span>Request Supply</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-white/90" />
+              </Link>
+            </div>
           </div>
         </div>
       )}

@@ -21,7 +21,8 @@ export function FaqAccordion() {
     },
     {
       question: "Can individuals purchase from Proh Pharmacy?",
-      answer: "Yes. Proh Pharmacy provides retail dispensing services to individual customers with doorstep delivery across Ghana.",
+      answer:
+        "Yes. Proh Pharmacy provides retail dispensing services to individual customers with doorstep delivery across Ghana.",
     },
     {
       question: "How can I request a wholesale quotation?",
@@ -35,56 +36,50 @@ export function FaqAccordion() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-3.5 sm:space-y-4">
+    <div className="max-w-3xl mx-auto space-y-3 sm:space-y-3.5">
       {faqs.map((faq, idx) => {
         const isOpen = openIndex === idx;
         return (
           <div
             key={faq.question}
-            className={`bg-white rounded-xl overflow-hidden transition-all duration-200 border ${
+            className={`bg-white rounded-none transition-colors duration-200 border ${
               isOpen
-                ? "border-primary-green/40 shadow-sm ring-1 ring-primary-green/15"
-                : "border-light-border/80 hover:border-primary-green/30 hover:shadow-xs"
+                ? "border-[#CCD0D4] shadow-2xs"
+                : "border-gray-200/80 hover:border-gray-300"
             }`}
           >
             <button
               type="button"
               onClick={() => toggle(idx)}
-              className="w-full px-5 py-4 sm:px-6 sm:py-5 text-left flex items-center justify-between gap-4 cursor-pointer transition-colors group"
+              className="w-full px-5 py-4 sm:px-6 sm:py-4.5 text-left flex items-center justify-between gap-4 cursor-pointer transition-colors group"
               aria-expanded={isOpen}
             >
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <span
-                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-[13px] font-medium shrink-0 transition-colors ${
+                  className={`w-6 h-6 rounded-none flex items-center justify-center text-[11px] font-normal shrink-0 transition-colors ${
                     isOpen
-                      ? "bg-primary-green text-white"
-                      : "bg-[#E5F4EC] text-primary-green"
+                      ? "bg-[#2D6A4F] text-white"
+                      : "bg-[#F4F8F5] text-[#787C82]"
                   }`}
                 >
                   {String(idx + 1).padStart(2, "0")}
                 </span>
-                <span className="font-medium text-main-text text-sm sm:text-base md:text-[17px] tracking-tight">
+                <span className="font-medium text-[#2C3338] text-sm sm:text-[15.5px] tracking-normal">
                   {faq.question}
                 </span>
               </div>
 
-              <span
-                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  isOpen
-                    ? "bg-light-green text-primary-green"
-                    : "bg-gray-100 text-gray-500 group-hover:bg-light-green group-hover:text-primary-green"
-                }`}
-              >
-                <div className="relative w-4 h-4 flex items-center justify-center">
+              <span className="w-6 h-6 rounded-none flex items-center justify-center shrink-0 text-[#787C82]">
+                <div className="relative w-3.5 h-3.5 flex items-center justify-center">
                   <Plus
-                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 absolute transition-all duration-300 ease-out ${
+                    className={`w-3.5 h-3.5 absolute transition-all duration-200 ease-out ${
                       isOpen
                         ? "rotate-90 opacity-0 scale-50"
                         : "rotate-0 opacity-100 scale-100"
                     }`}
                   />
                   <Minus
-                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 absolute transition-all duration-300 ease-out ${
+                    className={`w-3.5 h-3.5 absolute transition-all duration-200 ease-out ${
                       isOpen
                         ? "rotate-0 opacity-100 scale-100"
                         : "-rotate-90 opacity-0 scale-50"
@@ -94,15 +89,15 @@ export function FaqAccordion() {
               </span>
             </button>
 
-            {/* Smooth animated height expansion */}
+            {/* Smooth height expansion */}
             <div
-              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+              className={`grid transition-[grid-template-rows] duration-250 ease-out ${
                 isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
               }`}
             >
               <div className="overflow-hidden">
                 <div
-                  className={`px-5 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-light-border/40 pl-[52px] sm:pl-[64px] transition-opacity duration-300 ease-out ${
+                  className={`px-5 pb-5 sm:px-6 sm:pb-5 pt-1 text-xs sm:text-[13px] text-[#787C82] leading-relaxed border-t border-gray-100 pl-[48px] sm:pl-[60px] font-normal transition-opacity duration-200 ${
                     isOpen ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -116,11 +111,11 @@ export function FaqAccordion() {
 
       {/* Bottom Reassurance Link */}
       <div className="pt-8 sm:pt-10 text-center">
-        <p className="text-xs sm:text-sm text-gray-500">
+        <p className="text-xs sm:text-[13px] text-[#787C82] font-normal">
           Have a specific prescription or wholesale enquiry?{" "}
           <Link
             href="/contact"
-            className="font-semibold text-primary-green hover:text-deep-green inline-flex items-center gap-1 underline underline-offset-4 decoration-primary-green/40 hover:decoration-primary-green transition-colors"
+            className="font-medium text-[#2D6A4F] hover:text-[#1D2327] inline-flex items-center gap-1 underline underline-offset-4 decoration-[#2D6A4F]/40 hover:decoration-[#2D6A4F] transition-colors"
           >
             <span>Contact us directly</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

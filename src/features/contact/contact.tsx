@@ -3,24 +3,23 @@ import { ContactForm } from "./contact-form";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="pt-10 pb-16 sm:pt-14 sm:pb-20 md:pt-16 md:pb-24 bg-[#F4F9F6] border-b border-light-border/60">
-      <div className="container-custom">
-        {/* Clean Minimal Section Header matching Our Services */}
-        <div className="text-center max-w-xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2.5">
-            <span className="w-6 h-0.5 bg-primary-green rounded-full" />
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-main-text">
-              Contact Us
-            </h2>
-          </div>
-          <p className="text-xs sm:text-sm text-gray-500 font-normal mt-2 leading-relaxed">
+    <>
+      <div className="bg-[#022619]">
+        <nav className="flex flex-col items-center justify-center h-full min-h-[10vh] py-14 sm:py-16 gap-3 text-center px-4">
+          <h1 className="text-white font-medium text-3xl sm:text-[34px] tracking-normal">
+            Contact Us
+          </h1>
+          <span className="text-white/80 text-xs sm:text-[13px] font-normal">
             Send your medicine request, request a wholesale quotation, or enquire about nationwide delivery across Ghana.
-          </p>
-        </div>
-
-        {/* Unified Contact Information & Underline-Input Form Card */}
-        <ContactForm />
+          </span>
+        </nav>
       </div>
-    </section>
+
+      <section id="contact" className="pt-10 pb-16 sm:pt-14 sm:pb-20 md:pt-16 md:pb-22 bg-[#F4F8F5] border-b border-light-border/60">
+        <div className="container-custom">
+          <ContactForm />
+        </div>
+      </section>
+    </>
   );
 }

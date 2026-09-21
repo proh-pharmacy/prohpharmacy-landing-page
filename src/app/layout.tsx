@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { TopBar } from "@/components/layout/top-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { PharmacySchema } from "@/components/seo/pharmacy-schema";
+import { PharmacySchema, WebSiteSchema } from "@/components/seo/pharmacy-schema";
 import Nprogressprovider from "@/components/providers/nprogress-provider";
 import { WhatsAppFab } from "@/components/ui/whatsapp-fab";
 import { ScrollToTop } from "@/components/layout/scroll-to-top";
@@ -96,6 +96,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-white text-main-text font-sans antialiased overflow-x-hidden w-full max-w-[100vw]">
         <Nprogressprovider>
           <ScrollToTop />
+          <WebSiteSchema />
           <PharmacySchema />
           <TopBar />
           <Header />

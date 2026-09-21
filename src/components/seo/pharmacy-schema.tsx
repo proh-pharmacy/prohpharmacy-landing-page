@@ -1,6 +1,88 @@
 import React from "react";
 import { siteConfig } from "@/config/site";
 
+export function WebSiteSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Proh Pharmacy",
+    alternateName: "Proh Pharmacy Ghana",
+    url: "https://prohpharmacy.com",
+    description:
+      "Trusted retail and wholesale pharmaceutical supply, prescription delivery, and medical commerce across Ghana.",
+    inLanguage: "en-GH",
+    publisher: {
+      "@type": "Organization",
+      name: "Proh Pharmacy",
+      url: "https://prohpharmacy.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://prohpharmacy.com/images/prohpharmacy_icon.png",
+        width: 1024,
+        height: 1024,
+      },
+    },
+    hasPart: [
+      {
+        "@type": "WebPage",
+        name: "Home",
+        url: "https://prohpharmacy.com/",
+        description:
+          "Proh Pharmacy – Retail & Wholesale Medicine Delivery in Ghana",
+      },
+      {
+        "@type": "WebPage",
+        name: "About Us",
+        url: "https://prohpharmacy.com/about",
+        description:
+          "Trusted pharmaceutical supply partner since 2020 — our mission, branches, lab, and wholesale hubs.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Branches & Locations",
+        url: "https://prohpharmacy.com/branches",
+        description:
+          "Find Proh Pharmacy retail branches and 24/7 pickup locations across Ghana.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Pharmaceutical Services",
+        url: "https://prohpharmacy.com/services",
+        description:
+          "Retail dispensing, wholesale supply, prescription refills, and institutional procurement.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Wholesale Supply",
+        url: "https://prohpharmacy.com/wholesale",
+        description:
+          "Bulk pharmaceutical supply and wholesale medicine restocking for pharmacies, clinics, and hospitals in Ghana.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Nationwide Delivery",
+        url: "https://prohpharmacy.com/delivery",
+        description:
+          "Temperature-monitored medicine delivery across all 16 regions of Ghana.",
+      },
+      {
+        "@type": "WebPage",
+        name: "Contact Us",
+        url: "https://prohpharmacy.com/contact",
+        description:
+          "Request a wholesale quote, medicine enquiry, or delivery booking from Proh Pharmacy.",
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function PharmacySchema() {
   const schema = {
     "@context": "https://schema.org",

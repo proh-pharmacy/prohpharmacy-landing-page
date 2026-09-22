@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AboutDivider } from "./about-divider";
 
 export function AboutContent() {
   return (
     <section className="bg-white min-h-screen">
       {/* Top Banner */}
-      <div className="bg-[#022619]">
-        <nav className="flex flex-col items-center justify-center h-full min-h-[10vh] py-14 sm:py-16 gap-3 text-center px-4">
+      <div className="relative overflow-hidden bg-[#022619]">
+        <nav className="flex min-h-[10vh] h-full flex-col items-center justify-center gap-3 px-4 pt-14 pb-24 text-center sm:pt-16 sm:pb-28 md:pb-32">
           <h1 className="text-white font-medium text-3xl sm:text-[34px] tracking-normal">
             About Us
           </h1>
@@ -15,6 +16,7 @@ export function AboutContent() {
             About Proh Pharmacy and Reliable Healthcare Distribution in Ghana
           </span>
         </nav>
+        <AboutDivider />
       </div>
 
       {/* Block 1: Overview */}

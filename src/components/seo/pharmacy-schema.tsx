@@ -1,239 +1,154 @@
 import React from "react";
+import { branchesData } from "@/config/branches";
 import { siteConfig } from "@/config/site";
+import { Branch } from "@/types";
+import { serializeJsonLd, SITE_URL } from "@/lib/seo";
 
-export function WebSiteSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Proh Pharmacy",
-    alternateName: "Proh Pharmacy Ghana",
-    url: "https://prohpharmacy.com",
-    description:
-      "Trusted retail and wholesale pharmaceutical supply, prescription delivery, and medical commerce across Ghana.",
-    inLanguage: "en-GH",
-    publisher: {
-      "@type": "Organization",
-      name: "Proh Pharmacy",
-      url: "https://prohpharmacy.com",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://prohpharmacy.com/images/prohpharmacy_icon.png",
-        width: 1024,
-        height: 1024,
-      },
-    },
-    hasPart: [
-      {
-        "@type": "WebPage",
-        name: "Home",
-        url: "https://prohpharmacy.com/",
-        description:
-          "Proh Pharmacy – Retail & Wholesale Medicine Delivery in Ghana",
-      },
-      {
-        "@type": "WebPage",
-        name: "About Us",
-        url: "https://prohpharmacy.com/about",
-        description:
-          "Trusted pharmaceutical supply partner since 2020 — our mission, branches, lab, and wholesale hubs.",
-      },
-      {
-        "@type": "WebPage",
-        name: "Branches & Locations",
-        url: "https://prohpharmacy.com/branches",
-        description:
-          "Find Proh Pharmacy retail branches and 24/7 pickup locations across Ghana.",
-      },
-      {
-        "@type": "WebPage",
-        name: "Pharmaceutical Services",
-        url: "https://prohpharmacy.com/services",
-        description:
-          "Retail dispensing, wholesale supply, prescription refills, and institutional procurement.",
-      },
-      {
-        "@type": "WebPage",
-        name: "Wholesale Supply",
-        url: "https://prohpharmacy.com/wholesale",
-        description:
-          "Bulk pharmaceutical supply and wholesale medicine restocking for pharmacies, clinics, and hospitals in Ghana.",
-      },
-      {
-        "@type": "WebPage",
-        name: "Nationwide Delivery",
-        url: "https://prohpharmacy.com/delivery",
-        description:
-          "Temperature-monitored medicine delivery across all 16 regions of Ghana.",
-      },
-      {
-        "@type": "WebPage",
-        name: "Contact Us",
-        url: "https://prohpharmacy.com/contact",
-        description:
-          "Request a wholesale quote, medicine enquiry, or delivery booking from Proh Pharmacy.",
-      },
-    ],
-  };
-
+function JsonLd({ data }: { data: object }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
     />
   );
 }
 
-export function PharmacySchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": ["Pharmacy", "MedicalBusiness", "WholesaleStore", "Store"],
-    name: "Proh Pharmacy",
-    alternateName: [
-      "Proh Pharmacy Wholesale & Retail",
-      "Proh Pharmacy Ghana",
-      "Proh Medical Logistics",
-    ],
-    description:
-      "Trusted retail and wholesale pharmaceutical supply, prescription delivery, and medical commerce across Ghana. Serving individuals, community pharmacies, clinics, and hospitals with 8 retail branches, 1 laboratory, 2 wholesale hubs, and 5 dedicated trekking distribution vans.",
-    url: "https://prohpharmacy.com",
-    logo: "https://prohpharmacy.com/images/prohpharmacy_icon.png",
-    image: "https://prohpharmacy.com/images/header_image.png",
-    foundingDate: "2020-08",
-    priceRange: "GH₵₵",
-    currenciesAccepted: "GHS",
-    paymentAccepted:
-      "Cash, Mobile Money (MTN MoMo, Telecel Cash, AT Money), Bank Transfer",
-    openingHours: "Mo-Sa 08:00-20:00",
-    telephone: siteConfig.contact.phoneDisplay,
-    email: siteConfig.contact.email,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Accra",
-      addressRegion: "Greater Accra",
-      addressCountry: "GH",
-    },
-    areaServed: [
-      { "@type": "Country", name: "Ghana" },
-      { "@type": "AdministrativeArea", name: "Greater Accra Region" },
-      { "@type": "AdministrativeArea", name: "Ashanti Region" },
-      { "@type": "AdministrativeArea", name: "Eastern Region" },
-      { "@type": "AdministrativeArea", name: "Central Region" },
-      { "@type": "AdministrativeArea", name: "Western Region" },
-      { "@type": "AdministrativeArea", name: "Volta Region" },
-      { "@type": "AdministrativeArea", name: "Bono Region" },
-      { "@type": "AdministrativeArea", name: "Northern Region" },
-    ],
-    knowsAbout: [
-      "Wholesale Pharmaceutical Restocking",
-      "Retail Medicine Dispensing",
-      "Prescription Delivery Logistics",
-      "Cold Chain Pharmaceutical Storage",
-      "Institutional Hospital Procurement",
-      "Over-The-Counter (OTC) Health Products",
-    ],
-    hasDeliveryMethod: [
-      "https://schema.org/DeliveryModeOwnFleet",
-      "https://schema.org/OnSitePickup",
-    ],
-    potentialAction: [
-      {
-        "@type": "OrderAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://prohpharmacy.com/contact?type=wholesale",
-          inLanguage: "en-GH",
-          actionPlatform: [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform",
-          ],
+function internationalPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("233")) return `+${digits}`;
+  if (digits.startsWith("0")) return `+233${digits.slice(1)}`;
+  return `+${digits}`;
+}
+
+function schemaOpeningHours(branch: Branch) {
+  if (branch.is24Hours) return "Mo-Su 00:00-23:59";
+  if (branch.id === "pokuase-annex") return "Mo-Su 07:30-22:00";
+  if (branch.id === "rase-chemist") return "Mo-Su 07:00-22:30";
+  return undefined;
+}
+
+export function WebSiteSchema() {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: "Proh Pharmacy",
+        alternateName: "Proh Pharmacy Ghana",
+        url: SITE_URL,
+        description:
+          "Retail and wholesale medicine supply, pharmacy services, and delivery across Ghana.",
+        inLanguage: "en-GH",
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      }}
+    />
+  );
+}
+
+export function OrganizationSchema() {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Proh Pharmacy",
+        alternateName: "Proh Pharmacy Ghana",
+        description:
+          "Retail and wholesale pharmaceutical supply serving individuals, pharmacies, clinics, and healthcare facilities in Ghana.",
+        url: SITE_URL,
+        logo: `${SITE_URL}/images/prohpharmacy_icon.png`,
+        image: `${SITE_URL}/opengraph-image`,
+        foundingDate: "2020-08",
+        email: siteConfig.contact.email,
+        telephone: internationalPhone(siteConfig.contact.phoneDisplay),
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Appiah Danquah Taxi Station, Ghana Post GPS A24/9",
+          addressLocality: "Laterbiokorshie",
+          addressRegion: "Greater Accra",
+          addressCountry: "GH",
         },
-        deliveryMethod: "https://schema.org/DeliveryModeOwnFleet",
-      },
-      {
-        "@type": "CommunicateAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: siteConfig.contact.whatsappHref,
-          inLanguage: "en-GH",
-          actionPlatform: [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform",
-          ],
+        areaServed: { "@type": "Country", name: "Ghana" },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: internationalPhone(siteConfig.contact.phoneDisplay),
+          email: siteConfig.contact.email,
+          areaServed: "GH",
+          availableLanguage: "English",
         },
-      },
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Pharmaceutical Commerce, Wholesale Supply & Delivery Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Wholesale Pharmacy Supply & Distribution",
-            description:
-              "Bulk pharmaceutical procurement, tiered restocking discounts, and consistent supply contracts for community pharmacies, clinics, and hospitals.",
-            serviceType: "Wholesale Pharmaceutical Supply",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Retail Medicine & OTC Healthcare Supply",
-            description:
-              "Direct retail access to genuine prescription medications, vital OTC drugs, and wellness essentials for patients and families across Ghana.",
-            serviceType: "Retail Pharmacy Supply",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Nationwide Temperature-Monitored Medicine Delivery",
-            description:
-              "Reliable trekking van distribution routes and courier dispatch covering Greater Accra, Ashanti, and nationwide across Ghana.",
-            serviceType: "Medicine Delivery & Logistics",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Prescription Refill & Automatic Reordering",
-            description:
-              "Convenient digital prescription refills with scheduled routine deliveries for chronic condition management.",
-            serviceType: "Prescription Refill Service",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Institutional & Clinic Pharmaceutical Procurement",
-            description:
-              "Comprehensive medicine inventory replenishment and emergency supply agreements for medical facilities and maternity homes.",
-            serviceType: "Institutional Supply",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "24/7 Emergency Pharmacy Dispatch",
-            description:
-              "Urgent around-the-clock medication delivery, essential injectables, and critical care support.",
-            serviceType: "Emergency Pharmacy Service",
-          },
-        },
-      ],
-    },
-  };
+      }}
+    />
+  );
+}
+
+export function BranchesListSchema() {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Proh Pharmacy locations in Greater Accra",
+        numberOfItems: branchesData.length,
+        itemListElement: branchesData.map((branch, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: branch.name,
+          url: `${SITE_URL}/branches/${branch.id}`,
+        })),
+      }}
+    />
+  );
+}
+
+export function BranchSchema({ branch }: { branch: Branch }) {
+  const url = `${SITE_URL}/branches/${branch.id}`;
+  const locality = branch.location.split(",")[0].trim();
+  const streetAddress = [
+    branch.localArea,
+    branch.digitalAddress ? `Ghana Post GPS ${branch.digitalAddress}` : undefined,
+  ]
+    .filter(Boolean)
+    .join(", ");
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "Pharmacy",
+        "@id": `${url}/#pharmacy`,
+        name: branch.name,
+        description: `${branch.name} provides ${branch.services.join(", ").toLowerCase()} in ${branch.location}.`,
+        url,
+        image: branch.image ? `${SITE_URL}${branch.image}` : `${SITE_URL}/opengraph-image`,
+        telephone: internationalPhone(branch.phones[0]),
+        email: branch.email ?? siteConfig.contact.email,
+        priceRange: "GH₵₵",
+        currenciesAccepted: "GHS",
+        openingHours: schemaOpeningHours(branch),
+        address: {
+          "@type": "PostalAddress",
+          streetAddress,
+          addressLocality: locality,
+          addressRegion: "Greater Accra",
+          addressCountry: "GH",
+        },
+        areaServed: {
+          "@type": "AdministrativeArea",
+          name: branch.location,
+        },
+        parentOrganization: { "@id": `${SITE_URL}/#organization` },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: `${branch.name} services`,
+          itemListElement: branch.services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: service },
+          })),
+        },
+      }}
     />
   );
 }

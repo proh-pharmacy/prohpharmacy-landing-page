@@ -35,7 +35,7 @@ export function BranchesContent() {
             Our Branches
           </h1>
           <span className="text-white/80 text-xs sm:text-[13px] font-normal">
-            8 pharmacy locations across Greater Accra — retail, wholesale, and diagnostic services available 24/7.
+            8 pharmacy locations across Greater Accra, including six branches open 24 hours.
           </span>
         </nav>
       </div>
@@ -150,7 +150,7 @@ export function BranchesContent() {
         <div className="my-14 sm:my-20 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
           <div className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-6">
             <h2 className="text-2xl sm:text-[28px] md:text-[32px] font-medium tracking-normal text-[#2C3338] leading-tight">
-              Follow The Step And More Dream
+              Trusted pharmacy care, closer to your community
             </h2>
             <p className="text-xs sm:text-[13px] text-[#787C82] font-normal mt-3 leading-relaxed max-w-lg">
               Discover future-ready healthcare facilities equipped with certified pharmacists, essential medicine supplies, and modern diagnostic amenities.

@@ -11,7 +11,12 @@ import {
   ServiceChatIcon,
 } from "./service-icons";
 
-export function ServicesGrid() {
+interface ServicesGridProps {
+  headingLevel?: "h1" | "h2";
+}
+
+export function ServicesGrid({ headingLevel = "h2" }: ServicesGridProps) {
+  const Heading = headingLevel;
   const services = [
     {
       id: "retail",
@@ -84,9 +89,9 @@ export function ServicesGrid() {
         {/* Clean Subtle Section Header Matching WordPress Aesthetic */}
         <Reveal direction="up" distance={20} duration={500}>
           <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12 relative z-10">
-            <h2 className="text-2xl sm:text-[28px] font-medium tracking-normal text-[#2C3338]">
+            <Heading className="text-2xl sm:text-[28px] font-medium tracking-normal text-[#2C3338]">
               Our Services
-            </h2>
+            </Heading>
             <p className="text-xs sm:text-[13px] text-[#787C82] font-normal mt-2 leading-relaxed">
               Explore our range of pharmaceutical services tailored for Ghana
             </p>

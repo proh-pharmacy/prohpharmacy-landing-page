@@ -7,6 +7,7 @@ interface SectionHeaderProps {
   align?: "left" | "center";
   inverted?: boolean;
   className?: string;
+  headingLevel?: "h1" | "h2";
 }
 
 export function SectionHeader({
@@ -16,8 +17,10 @@ export function SectionHeader({
   align = "center",
   inverted = false,
   className = "",
+  headingLevel = "h2",
 }: SectionHeaderProps) {
   const alignment = align === "center" ? "text-center mx-auto items-center" : "text-left items-start";
+  const Heading = headingLevel;
 
   return (
     <div className={`flex flex-col max-w-2xl mb-10 md:mb-14 ${alignment} ${className}`}>
@@ -30,13 +33,13 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <h2
+      <Heading
         className={`text-2xl sm:text-3xl font-bold tracking-tight leading-tight ${
           inverted ? "text-white" : "text-main-text"
         }`}
       >
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p
           className={`mt-3 text-sm sm:text-base leading-relaxed ${

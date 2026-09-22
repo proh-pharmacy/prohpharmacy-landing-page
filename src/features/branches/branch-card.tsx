@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Branch } from "@/types";
 import { BranchDetailModal } from "./branch-detail-modal";
 
@@ -85,11 +86,13 @@ export function BranchCard({
         {/* Content Details Below the Image - WordPress Subtle Weight & Contrast */}
         <div className="pt-3.5 flex flex-col items-center text-center w-full">
           {/* Title - Soft medium weight, no harsh black */}
-          <h3
-            onClick={() => setIsModalOpen(true)}
-            className="text-[15px] sm:text-[16px] font-medium text-[#2C3338] hover:text-[#087A2D] transition-colors cursor-pointer leading-snug tracking-normal"
-          >
-            {displayTitle}
+          <h3 className="text-[15px] sm:text-[16px] font-medium leading-snug tracking-normal">
+            <Link
+              href={`/branches/${branch.id}`}
+              className="text-[#2C3338] transition-colors hover:text-[#087A2D]"
+            >
+              {displayTitle}
+            </Link>
           </h3>
 
           {/* Location Subtitle - Muted gray, light-normal font */}
@@ -99,13 +102,12 @@ export function BranchCard({
 
           {/* WordPress-Style Outline Button: Light hairline border, subdued text */}
           <div className="mt-3">
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(true)}
+            <Link
+              href={`/branches/${branch.id}`}
               className="inline-flex items-center justify-center px-3.5 py-1.5 border border-[#CCD0D4] hover:border-[#2C3338] hover:text-[#1D2327] text-[10px] font-normal tracking-widest uppercase text-[#50575E] transition-colors cursor-pointer rounded-xs"
             >
               VIEW DETAIL
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { Phone, Mail, MapPin, CheckCircle2, MessageCircle } from "lucide-react";
 
@@ -19,6 +20,20 @@ export function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim() && phone.trim() && effectiveSubject.trim() && message.trim()) {
+      const whatsappMessage = [
+        "Hello Proh Pharmacy, I would like to make an enquiry.",
+        `Name: ${name.trim()}`,
+        `Phone: ${phone.trim()}`,
+        `Contact type: ${entityType === "institutional" ? "Business or institutional" : "Personal"}`,
+        `Subject: ${effectiveSubject.trim()}`,
+        `Message: ${message.trim()}`,
+      ].join("\n");
+
+      window.open(
+        `https://wa.me/233534740592?text=${encodeURIComponent(whatsappMessage)}`,
+        "_blank",
+        "noopener,noreferrer",
+      );
       setSubmitted(true);
       setName("");
       setPhone("");
@@ -287,7 +302,7 @@ export function ContactForm() {
             {submitted && (
               <div className="p-3 bg-[#F4F8F5] border border-[#CCD0D4] text-xs text-[#2D6A4F] flex items-center gap-2 rounded-none">
                 <CheckCircle2 className="w-4 h-4 text-[#2D6A4F] shrink-0" />
-                <span>Thank you! Your message has been sent successfully.</span>
+                <span>Your WhatsApp message is ready. Send it in WhatsApp to complete your enquiry.</span>
               </div>
             )}
 
@@ -298,6 +313,12 @@ export function ContactForm() {
               >
                 Send Message
               </button>
+              <p className="mt-3 max-w-md text-[10.5px] leading-relaxed text-[#787C82]">
+                Submitting opens WhatsApp with your enquiry. See our{" "}
+                <Link href="/privacy" className="text-[#2D6A4F] underline">
+                  Privacy Policy
+                </Link>.
+              </p>
             </div>
           </form>
         </div>

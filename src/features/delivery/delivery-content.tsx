@@ -125,8 +125,13 @@ const REGIONS_DATA: RegionInfo[] = [
   },
 ];
 
-export function DeliveryContent() {
+interface DeliveryContentProps {
+  headingLevel?: "h1" | "h2";
+}
+
+export function DeliveryContent({ headingLevel = "h2" }: DeliveryContentProps) {
   const [highlightedRegion, setHighlightedRegion] = useState<string | null>(null);
+  const Heading = headingLevel;
 
   const availableRegions = REGIONS_DATA.filter((r) => r.status === "available");
   const comingSoonRegions = REGIONS_DATA.filter((r) => r.status === "coming_soon");
@@ -145,12 +150,12 @@ export function DeliveryContent() {
           <div className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2.5">
               <span className="w-6 h-0.5 bg-[#018959] rounded-full" />
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              <Heading className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                 Where We Deliver To
-              </h2>
+              </Heading>
             </div>
             <p className="text-xs sm:text-sm text-zinc-300/90 font-normal mt-2 leading-relaxed">
-              We deploy 5 dedicated trekking vans delivering genuine medicines to healthcare facilities and pharmacies across Ghana.
+              Five dedicated trekking vans currently serve eight regions, with expansion planned for the remaining regions of Ghana.
             </p>
           </div>
         </Reveal>

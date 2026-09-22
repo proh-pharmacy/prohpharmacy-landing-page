@@ -2,7 +2,11 @@ import React from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { WholesaleActions } from "./wholesale-actions";
 
-export function WholesaleContent() {
+interface WholesaleContentProps {
+  headingLevel?: "h1" | "h2";
+}
+
+export function WholesaleContent({ headingLevel = "h2" }: WholesaleContentProps) {
   return (
     <section className="py-14 md:py-20 bg-white">
       <div className="container-custom">
@@ -10,6 +14,7 @@ export function WholesaleContent() {
           eyebrow="Pharmacy Supply"
           title="Reliable supply for pharmacies across Ghana"
           description="Proh Pharmacy supports pharmacies with convenient access to wholesale medicine supplies. Send us your requirements, request a quotation and arrange delivery to your location anywhere in Ghana."
+          headingLevel={headingLevel}
         />
 
         {/* 3 Actions */}

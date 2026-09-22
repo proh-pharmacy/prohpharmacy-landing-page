@@ -125,11 +125,11 @@ export function Footer() {
           <p>© 2026 Proh Pharmacy. All rights reserved.</p>
           
           <div className="flex flex-wrap items-center gap-6">
-            <Link href="/contact" className="hover:text-white transition-colors">
+            <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/contact" className="hover:text-white transition-colors">
-              Terms & Conditions
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Website Terms
             </Link>
             
             {/* Staff portal link: prepared for production launch, discreetly tucked per instructions */}

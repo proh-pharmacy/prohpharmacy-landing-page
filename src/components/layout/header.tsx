@@ -208,7 +208,7 @@ export function Header() {
             <div className="p-5 sm:p-6 border-t border-gray-100 bg-gray-50/50 shrink-0 space-y-4">
               <div>
                 <p className="text-[11px] text-[#787C82] font-normal leading-relaxed">
-                  Open 24/7 for retail medicine dispensing, wholesale distribution, and nationwide transit.
+                  Selected branches are open 24/7 for retail dispensing, with wholesale and delivery support available.
                 </p>
                 <a
                   href="tel:0244187892"

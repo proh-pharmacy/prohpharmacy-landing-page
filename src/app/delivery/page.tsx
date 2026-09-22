@@ -1,26 +1,18 @@
-import type { Metadata } from "next";
 import { DeliveryContent } from "@/features/delivery/delivery-content";
 import { HowItWorks } from "@/features/how-it-works/how-it-works";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Nationwide Medicine Delivery | All 16 Regions of Ghana",
+export const metadata = createPageMetadata({
+  title: "Medicine Delivery Across Ghana",
   description:
-    "Proh Pharmacy arranges safe, reliable medicine delivery to individuals and pharmacies anywhere in Ghana. Learn about our nationwide courier logistics and dispatch.",
-  keywords: [
-    "Medicine delivery Ghana",
-    "Pharmacy delivery Accra Kumasi",
-    "Prescription delivery nationwide",
-    "Ghana pharmaceutical transport",
-  ],
-  alternates: {
-    canonical: "https://prohpharmacy.com/delivery",
-  },
-};
+    "Explore Proh Pharmacy medicine delivery routes across eight active regions in Ghana and the regions planned for future expansion.",
+  path: "/delivery",
+});
 
 export default function DeliveryPage() {
   return (
     <div>
-      <DeliveryContent />
+      <DeliveryContent headingLevel="h1" />
       <HowItWorks />
     </div>
   );

@@ -14,7 +14,7 @@ interface BranchesSectionProps {
 
 export function BranchesSection({
   title = "Our Pharmacy Branches & Marts",
-  subtitle = "Visit any of our 8 strategically located pharmacy branches across Greater Accra for 24/7 retail dispensing, wholesale supply, and diagnostic testing.",
+  subtitle = "Visit any of our 8 pharmacy branches across Greater Accra for retail dispensing, wholesale supply, diagnostic testing, and selected 24/7 services.",
   limit = 3,
   showViewAll = true,
 }: BranchesSectionProps) {

@@ -1,20 +1,12 @@
-import type { Metadata } from "next";
 import { AboutContent } from "@/features/about/about-content";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us | Trusted Pharmaceutical Supply Partner",
+export const metadata = createPageMetadata({
+  title: "About Our Pharmacy",
   description:
     "Learn about Proh Pharmacy, our mission to support individuals and retail pharmacies with dependable medicine supply, and nationwide distribution across Ghana.",
-  keywords: [
-    "About Proh Pharmacy",
-    "Pharmaceutical company Ghana",
-    "Medicine distributor Ghana",
-    "Pharmacy partner Accra",
-  ],
-  alternates: {
-    canonical: "https://prohpharmacy.com/about",
-  },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

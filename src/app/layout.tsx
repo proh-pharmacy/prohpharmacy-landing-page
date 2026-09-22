@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import { TopBar } from "@/components/layout/top-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { PharmacySchema, WebSiteSchema } from "@/components/seo/pharmacy-schema";
+import { OrganizationSchema, WebSiteSchema } from "@/components/seo/pharmacy-schema";
 import Nprogressprovider from "@/components/providers/nprogress-provider";
 import { WhatsAppFab } from "@/components/ui/whatsapp-fab";
 import { ScrollToTop } from "@/components/layout/scroll-to-top";
+import { DEFAULT_SOCIAL_IMAGE } from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,20 +24,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Proh Pharmacy | Retail & Wholesale Medicine Delivery in Ghana",
+    default: "Proh Pharmacy | Medicine Supply & Delivery in Ghana",
     template: "%s | Proh Pharmacy",
   },
   description:
     "Proh Pharmacy provides retail and wholesale medicine supply to individuals and pharmacies, with reliable delivery anywhere in Ghana.",
-  keywords: [
-    "Pharmacy in Ghana",
-    "Wholesale medicine supplier Ghana",
-    "Pharmaceutical supplier Ghana",
-    "Medicine delivery Ghana",
-    "Wholesale pharmacy Ghana",
-    "Proh Pharmacy",
-  ],
   authors: [{ name: "Proh Pharmacy" }],
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   metadataBase: new URL("https://prohpharmacy.com"),
   alternates: {
     canonical: "https://prohpharmacy.com/",
@@ -53,17 +49,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Proh Pharmacy | Retail & Wholesale Medicine Delivery in Ghana",
+    title: "Proh Pharmacy | Medicine Supply & Delivery in Ghana",
     description:
       "Reliable retail and wholesale medicine supply to individuals and pharmacies with nationwide delivery across Ghana.",
     url: "https://prohpharmacy.com/",
     siteName: "Proh Pharmacy",
     images: [
       {
-        url: "/images/prohpharmacy_icon.png",
-        width: 1024,
-        height: 1024,
-        alt: "Proh Pharmacy Logo",
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Proh Pharmacy medicine supply and delivery in Ghana",
       },
     ],
     locale: "en_GH",
@@ -71,10 +67,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Proh Pharmacy | Retail & Wholesale Medicine Delivery in Ghana",
+    title: "Proh Pharmacy | Medicine Supply & Delivery in Ghana",
     description:
       "Reliable retail and wholesale medicine supply to individuals and pharmacies with nationwide delivery across Ghana.",
-    images: ["/images/prohpharmacy_icon.png"],
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
   icons: {
     icon: [
@@ -92,12 +88,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
+    <html lang="en-GH" className={inter.variable} data-scroll-behavior="smooth">
       <body className="min-h-screen flex flex-col bg-white text-main-text font-sans antialiased overflow-x-hidden w-full max-w-[100vw]">
         <Nprogressprovider>
           <ScrollToTop />
           <WebSiteSchema />
-          <PharmacySchema />
+          <OrganizationSchema />
           <TopBar />
           <Header />
           <main className="flex-grow overflow-x-hidden w-full">{children}</main>

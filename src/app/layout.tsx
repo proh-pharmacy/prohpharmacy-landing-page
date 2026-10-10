@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { OrganizationSchema, WebSiteSchema } from "@/components/seo/pharmacy-schema";
 import Nprogressprovider from "@/components/providers/nprogress-provider";
-import { WhatsAppFab } from "@/components/ui/whatsapp-fab";
+import { ChatwootProvider } from "@/components/providers/chatwoot-provider";
 import { ScrollToTop } from "@/components/layout/scroll-to-top";
 import { DEFAULT_SOCIAL_IMAGE } from "@/lib/seo";
 import "./globals.css";
@@ -98,7 +98,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-grow overflow-x-hidden w-full">{children}</main>
           <Footer />
-          <WhatsAppFab />
+          <ChatwootProvider />
         </Nprogressprovider>
       </body>
     </html>
